@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 Andrea de la Torre Torres, andreadelatorree
-
+Marina Garcia Diaz, maarinuus
 
 ## Objetivos del trabajo
 
