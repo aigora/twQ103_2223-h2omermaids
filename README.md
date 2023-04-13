@@ -8,6 +8,8 @@ Andrea de la Torre Torres, andreadelatorree
 
 Marina Garcia Diaz, maarinuus
 
+Maria Garcia Muñoz, mariagarm
+
 ## Objetivos del trabajo
 
 [Lista de los objetivos que se persiguen con el trabajo propuesto.]
