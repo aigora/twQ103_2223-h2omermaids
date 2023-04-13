@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 Andrea de la Torre Torres, andreadelatoree
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+
 
 ## Objetivos del trabajo
 
