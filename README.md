@@ -3,7 +3,7 @@
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-Andrea de la Torre Torres, andreadelatoree
+Andrea de la Torre Torres, andreadelatorree
 
 
 ## Objetivos del trabajo
