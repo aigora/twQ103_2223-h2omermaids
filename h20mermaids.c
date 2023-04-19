@@ -1,4 +1,13 @@
 #include<stdio.h>
+#include<stdio.h>
+	 typedef struct {
+		char nombre[50];
+		char apellido[50];
+		char DNI[9];
+	}registro;
+	
+	void registrarse();
+
 
 int main(){
 	int opcion1;
@@ -11,7 +20,7 @@ int main(){
     
     switch (opcion1) {
     	case 1:
-    		
+    		registrarse();
     		break;
     	case 2:
     		
@@ -47,6 +56,31 @@ int main(){
     	default:
     		printf("Opcion invalida\n");
     		break;
+	}
+	
+	void registrarse(){
+	struct registro m;
+   		FILE *usuarios;
+
+   printf("Ingrese su nombre:\n");
+   scanf("%s", m.nombre);
+
+   printf("Ingrese su apellido:\n ");
+   scanf("%s", m.apellido);
+
+   printf("Ingrese su DNI:\n");
+   scanf("%s", m.DNI);
+
+   usuarios = fopen("usuarios.txt", "w");
+   if(ususarios==NULL{
+   printf("Error al abrir el fichero.\n");
+   exit(1);
+   })
+   fprintf(usuarios, "%s %s %s\n", x.nombre, x.apellido, x.DNI);
+
+   fclose(usuarios);
+
+   printf("\nLos datos de la persona se han guardado");	
 	}
 	
 return 0;
