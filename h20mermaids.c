@@ -1,16 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-	 typedef struct {
-		char nombre[50];
-		char apellido[50];
-		char DNI[9];
-	}registro;
-	
-	void registrarse();
 
+	void registrar();
 
 int main(){
+	
 	int opcion1;
+	
 	printf("Bienvenido al buscador ...\n");
     printf("Elige entre una de estas opciones:\n");
     printf("1. Registrarte\n");
@@ -20,7 +16,7 @@ int main(){
     
     switch (opcion1) {
     	case 1:
-    		registrarse();
+    		registrar()	;
     		break;
     	case 2:
     		
@@ -30,9 +26,10 @@ int main(){
     		printf("Hasta pronto\n");
     		break;
     	default:
-    		printf("Opcion invalida\n");
+    		printf("Opcion invalida. Intente de nuevo.\n");
     		break;
-	}
+		}
+	
 	
 	int opcion2;
 	printf("Haz iniciado sesion correctamente\n");
@@ -57,9 +54,16 @@ int main(){
     		printf("Opcion invalida\n");
     		break;
 	}
+	return 0;
+	}
+	void registrar(){
+	typedef struct {
+		char nombre[50];
+		char apellido[50];
+		char DNI[9];
+	} Registro;
 	
-	void registrarse(){
-	struct registro m;
+		Registro m ;
    		FILE *usuarios;
 
    printf("Ingrese su nombre:\n");
@@ -71,20 +75,15 @@ int main(){
    printf("Ingrese su DNI:\n");
    scanf("%s", m.DNI);
 
-   usuarios = fopen("usuarios.txt", "w");
-   if(ususarios==NULL{
-   printf("Error al abrir el fichero.\n");
-   exit(1);
-   })
-   fprintf(usuarios, "%s %s %s\n", x.nombre, x.apellido, x.DNI);
+   usuarios = fopen("usuarios.txt", "a");
+   
+   fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
+	fclose(usuarios);
 
-   fclose(usuarios);
-
-   printf("\nLos datos de la persona se han guardado");	
+   printf("\nSus datos han sido guardados");	
 	}
 	
-return 0;
-}
+
 	
 	
 	
