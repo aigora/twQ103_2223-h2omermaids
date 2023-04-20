@@ -86,38 +86,45 @@ int main(){
 	
 		Registro m ;
    		FILE *usuarios;
+    
+	printf("Ingrese su nombre:\n");
+	fflush(stdin);
+   	gets(m.nombre);
+  
+   	printf("Ingrese su apellido:\n ");
+  	gets(m.apellido);
+  	
+   	printf("Ingrese su DNI:\n");
+   	scanf("%s", m.DNI);
 
-   printf("Ingrese su nombre:\n");
-   scanf("%s", m.nombre);
-   printf("Ingrese su apellido:\n ");
-   gets(m.apellido);
-   printf("Ingrese su DNI:\n");
-   scanf("%s", m.DNI);
-
-   usuarios = fopen("usuarios.txt", "a");
+    usuarios = fopen("usuarios.txt", "a");
    
-   fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
+    fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
 	fclose(usuarios);
 
    printf("\nSus datos han sido guardados\n");	
 	}
 	
 
-	void inicio(){
-		typedef struct {
+void inicio(){
+	typedef struct {
 		char nombre[50];
 		char apellido[50];
 		char DNI[9];
-	} Ingreso;
+	} Registro;
 	
-	Ingreso a;
-	printf("Ingrese su nombre:\n");
-    scanf("%s", a.nombre);
+		Registro m ;
+   		FILE *usuarios;
 
-    printf("Ingrese su apellido:\n");
-    gets(a.apellido);
-	printf("Ingrese su DNI:\n");
-    scanf("%s", a.DNI);
+   printf("Ingrese su nombre:\n");
+   scanf("%s", m.nombre);
+
+   printf("Ingrese su apellido:\n ");
+   scanf("%s", m.apellido);
+
+   gets(m.apellido);
+   printf("Ingrese su DNI:\n");
+   scanf("%s", m.DNI);
 
  	FILE* usuarios =fopen("usuarios.txt", "r")	;
 	if (usuarios == NULL){
