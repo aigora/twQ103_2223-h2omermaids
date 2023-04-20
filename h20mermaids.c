@@ -122,7 +122,7 @@ int main(){
    printf("Ingrese su DNI:\n");
    scanf("%s", a.DNI);
 
-	FILE* ususarios =fopen("usuarios.txt", "r")	;
+	FILE* usuarios =fopen("usuarios.txt", "r")	;
 	if (usuarios == NULL){
 		printf("Error al abrir el fichero\n");
 		return;
