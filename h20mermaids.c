@@ -89,10 +89,8 @@ int main(){
 
    printf("Ingrese su nombre:\n");
    scanf("%s", m.nombre);
-
    printf("Ingrese su apellido:\n ");
-   scanf("%s", m.apellido);
-
+   gets(m.apellido);
    printf("Ingrese su DNI:\n");
    scanf("%s", m.DNI);
 
