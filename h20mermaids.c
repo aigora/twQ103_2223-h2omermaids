@@ -2,7 +2,8 @@
 #include<stdlib.h>
 
 	void registrar();
-
+	 void inicio();
+	 
 int main(){
 	
 	int opcion1;
@@ -19,7 +20,7 @@ int main(){
     		registrar()	;
     		break;
     	case 2:
-    		
+    		inicio();
     		break;
     		
     	case 3:
@@ -80,10 +81,38 @@ int main(){
    fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
 	fclose(usuarios);
 
-   printf("\nSus datos han sido guardados");	
+   printf("\nSus datos han sido guardados\n");	
 	}
 	
 
+	void inicio(){
+		typedef struct {
+		char nombre[50];
+		char apellido[50];
+		char DNI[9];
+	} Ingreso;
+	
+	Ingreso a;
+	 printf("Ingrese su nombre:\n");
+   scanf("%s", a.nombre);
+
+   printf("Ingrese su apellido:\n ");
+   scanf("%s", a.apellido);
+
+   printf("Ingrese su DNI:\n");
+   scanf("%s", a.DNI);
+
+	FILE* ususarios =fopen("usuarios.txt", "r")	;
+	if (usuarios == NULL){
+		printf("Error al abrir el fichero\n");
+		return;
+	}
+	
+	
+	
+	
+	
+	}
 	
 	
 	
