@@ -8,7 +8,7 @@ int main(){
 	
 	int opcion1;
 	char aux, nombre_fichero[100];
-    FILE *fentrada, *fsalida;
+    FILE *fentrada, *fsalida, *usuarios;
 	
 	printf("Bienvenido al buscador ...\n");
     printf("Elige entre una de estas opciones:\n");
@@ -48,7 +48,7 @@ int main(){
     		break;
     	case 2:
     		do{
-    			printf("Introduzca el barrios consultar (acabado en .txt). \n");
+    			printf("Introduzca el barrio a consultar (acabado en .txt). \n");
     			scanf("%s", nombre_fichero);
 				fentrada = fopen(nombre_fichero, "r");
 				if(fentrada==NULL){
@@ -113,16 +113,15 @@ int main(){
 	} Ingreso;
 	
 	Ingreso a;
-	 printf("Ingrese su nombre:\n");
-   scanf("%s", a.nombre);
+	printf("Ingrese su nombre:\n");
+    scanf("%s", a.nombre);
 
-   printf("Ingrese su apellido:\n ");
-   scanf("%s", a.apellido);
+    printf("Ingrese su apellido:\n");
+    gets(a.apellido);
+	printf("Ingrese su DNI:\n");
+    scanf("%s", a.DNI);
 
-   printf("Ingrese su DNI:\n");
-   scanf("%s", a.DNI);
-
-	FILE* usuarios =fopen("usuarios.txt", "r")	;
+ 	FILE* usuarios =fopen("usuarios.txt", "r")	;
 	if (usuarios == NULL){
 		printf("Error al abrir el fichero\n");
 		return;
