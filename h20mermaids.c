@@ -82,6 +82,7 @@ int main(){
 		char nombre[50];
 		char apellido[50];
 		char DNI[9];
+		char codigo_clave[5];
 	} Registro;
 	
 		Registro m ;
@@ -96,10 +97,12 @@ int main(){
   	
    	printf("Ingrese su DNI:\n");
    	scanf("%s", m.DNI);
-
+   	
+   	printf("Ingrese una clave de 4 digitos:\n");
+   	scanf("%s",m.codigo_clave);
     usuarios = fopen("usuarios.txt", "a");
    
-    fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
+    fprintf(usuarios, "%s %s %s %s\n", m.nombre, m.apellido, m.DNI, m.codigo_clave);
 	fclose(usuarios);
 
    printf("\nSus datos han sido guardados\n");	
@@ -126,7 +129,7 @@ void inicio(){
    printf("Ingrese su DNI:\n");
    scanf("%s", m.DNI);
 
- 	FILE* usuarios =fopen("usuarios.txt", "r")	;
+ 	FILE*usuarios =fopen("usuarios.txt", "r");
 	if (usuarios == NULL){
 		printf("Error al abrir el fichero\n");
 		return;
