@@ -121,15 +121,53 @@ void inicio(){
 
    printf("Ingrese su nombre:\n");
    scanf("%s", m.nombre);
-
    printf("Ingrese su apellido:\n ");
+<<<<<<< Updated upstream
    scanf("%s", m.apellido);
 
+=======
+>>>>>>> Stashed changes
    gets(m.apellido);
    printf("Ingrese su DNI:\n");
    scanf("%s", m.DNI);
 
+<<<<<<< Updated upstream
  	FILE*usuarios =fopen("usuarios.txt", "r");
+=======
+   usuarios = fopen("usuarios.txt", "a");
+   
+   fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
+	fclose(usuarios);
+
+   printf("\nSus datos han sido guardados\n");	
+	}
+	
+
+	void inicio(){
+		typedef struct {
+		char nombre[50];
+		char apellido[50];
+		char DNI[9];
+	} Ingreso;
+	
+	Ingreso a;
+	printf("Ingrese su nombre:\n");
+    scanf("%s", a.nombre);
+
+    printf("Ingrese su apellido:\n");
+    gets(a.apellido);
+	printf("Ingrese su DNI:\n");
+    scanf("%s", a.DNI);
+
+<<<<<<< HEAD
+   printf("Ingrese su DNI:\n");
+   scanf("%s", a.DNI);
+
+	FILE* ususarios =fopen("usuarios.txt", "r")	;
+=======
+ 	FILE* usuarios =fopen("usuarios.txt", "r")	;
+>>>>>>> 982656f4a5938a457d962b027608c30d781a1259
+>>>>>>> Stashed changes
 	if (usuarios == NULL){
 		printf("Error al abrir el fichero\n");
 		return;
