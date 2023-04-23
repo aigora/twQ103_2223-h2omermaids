@@ -1,2 +1,14 @@
 Marina Garcia 51494835C
+<<<<<<< Updated upstream
 Andrea de la Torre 01945049P
+=======
+Andrea de la
+Andrea delaTorre 01945049P
+Andrea de la
+Andrea de la
+Andrea de la
+Andrea de la
+Andrea de la
+Andrea de la
+Andrea de la
+>>>>>>> Stashed changes
