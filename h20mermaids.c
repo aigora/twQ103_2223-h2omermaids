@@ -33,7 +33,7 @@ int main(){
     		printf("Opcion invalida. Intente de nuevo.\n");
     		break;
 		}
-	
+
 	int opcion2;
 	printf("Has iniciado sesion correctamente\n");
     printf("Elige entre una de estas opciones:\n");
@@ -45,7 +45,7 @@ int main(){
     
     switch (opcion2) {
     	case 1:
-    		
+    		a_datos();
     		break;
     	case 2:
     		do{
@@ -109,8 +109,8 @@ int main(){
    printf("\nSus datos han sido guardados\n");	
 	}
 	
-
-/*void inicio(){
+/*
+void inicio(){
 	typedef struct {
 		char nombre[50];
 		char apellido[50];
