@@ -93,7 +93,7 @@ int main(){
 	fflush(stdin);
    	gets(m.nombre);
   
-   	printf("Ingrese su apellido:\n ");
+   	printf("Ingrese sus apellidos:\n ");
   	gets(m.apellido);
   	
    	printf("Ingrese su DNI:\n");
@@ -185,8 +185,10 @@ void a_datos(){
    		FILE *fp;
    	
    		
-    printf("Introduzca el barrio a consultar (acabado en .txt). \n");
+    printf("Introduzca el barrio en el que deseas agregar datos (acabado en .txt): \n");
     scanf("%s", nombre_fichero);
+    
+    fp= fopen(nombre_fichero, "a");
     
    	printf("Ingrese el nombre de la fuente:\n");
    	scanf("%s", a.nombre);
@@ -211,10 +213,8 @@ void a_datos(){
     
 	printf("Ingrese la potabilidad de la fuente:\n ");
     scanf("%f", &a.potabilidad);
-    
-    fp= fopen("nombre_fichero.txt", "a");
  
-    fprintf(fp, "%f %f %f %f %f %f\n", a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal, a.potabilidad);
+    fprintf(fp, "%s %f %f %f %f %f %f\n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal, a.potabilidad);
     printf("Los datos se han agregado correctamente al archivo.\n");
 	fclose(fp);
 
