@@ -1,8 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<string.h>
+	
 	void registrar();
-	//void inicio();
+	void inicio();
 	void a_datos();
 	 
 int main(){
@@ -21,9 +22,8 @@ int main(){
     switch (opcion1) {
     	case 1:
     		registrar()	;
-    		break;
     	case 2:
-    		//inicio();
+    		inicio();
     		break;
     		
     	case 3:
@@ -80,64 +80,30 @@ int main(){
 	
 	void registrar(){
 	typedef struct {
-		char nombre[50];
-		char apellido[50];
+		char nombre[100];
+		char apellido[100];
 		char DNI[9];
 		char codigo_clave[5];
 	} Registro;
 	
-		Registro m ;
-   		FILE *usuarios;
-    
-	printf("Ingrese su nombre:\n");
-	fflush(stdin);
-   	gets(m.nombre);
-  
-   	printf("Ingrese sus apellidos:\n ");
-  	gets(m.apellido);
-  	
-   	printf("Ingrese su DNI:\n");
-   	scanf("%s", m.DNI);
-   	
-   	printf("Ingrese una clave de 4 digitos:\n");
-   	scanf("%s",m.codigo_clave);
-    usuarios = fopen("usuarios.txt", "a");
-   
-    fprintf(usuarios, "%s %s %s %s\n", m.nombre, m.apellido, m.DNI, m.codigo_clave);
-	fclose(usuarios);
-
-   printf("\nSus datos han sido guardados\n");	
-	}
-	
-/*
-void inicio(){
-	typedef struct {
-		char nombre[50];
-		char apellido[50];
-		char DNI[9];
-	} Registro;
-	
-		Registro m ;
+		Registro registro ;
    		FILE *usuarios;
 
    printf("Ingrese su nombre:\n");
-   scanf("%s", m.nombre);
-   printf("Ingrese su apellido:\n ");
-<<<<<<< Updated upstream
-   scanf("%s", m.apellido);
-
-=======
->>>>>>> Stashed changes
-   gets(m.apellido);
-   printf("Ingrese su DNI:\n");
-   scanf("%s", m.DNI);
-
-<<<<<<< Updated upstream
- 	FILE*usuarios =fopen("usuarios.txt", "r");
-=======
-   usuarios = fopen("usuarios.txt", "a");
+  fgets(registro.nombre, 100, stdin);
    
-   fprintf(usuarios, "%s %s %s\n", m.nombre, m.apellido, m.DNI);
+   printf("Ingrese su apellido:\n ");
+   fgets(registro.apellido, 100, stdin);
+   
+   printf("Ingrese su DNI:\n");
+   	fgets(registro.DNI, 9, stdin);
+   	
+   	printf("Ingrese una clave de 4 digitos:\n");
+	fgets(registro.codigo_clave, 5, stdin);
+   	
+    usuarios = fopen("usuarios.txt", "a");
+   
+    fprintf(usuarios, "%s %s %s %s\n", registro.nombre, registro.apellido, registro.DNI, registro.codigo_clave);
 	fclose(usuarios);
 
    printf("\nSus datos han sido guardados\n");	
@@ -146,34 +112,73 @@ void inicio(){
 
 	void inicio(){
 		typedef struct {
-		char nombre[50];
-		char apellido[50];
+		char nombre[100];
+		char apellido[100];
 		char DNI[9];
+		char codigo_clave[5];
 	} Ingreso;
 	
-	Ingreso a;
-	printf("Ingrese su nombre:\n");
-    scanf("%s", a.nombre);
-
-    printf("Ingrese su apellido:\n");
-    gets(a.apellido);
+	Ingreso ingreso;
+	
 	printf("Ingrese su DNI:\n");
-    scanf("%s", a.DNI);
+  	fgets(ingreso.DNI, 9, stdin);
+  	 
+  	 printf("Ingrese una clave de 4 digitos:\n");
+  	fgets(ingreso.codigo_clave, 5, stdin);	
 
-<<<<<<< HEAD
-   printf("Ingrese su DNI:\n");
-   scanf("%s", a.DNI);
-
-	FILE* ususarios =fopen("usuarios.txt", "r")	;
-=======
  	FILE* usuarios =fopen("usuarios.txt", "r")	;
->>>>>>> 982656f4a5938a457d962b027608c30d781a1259
->>>>>>> Stashed changes
+
 	if (usuarios == NULL){
 		printf("Error al abrir el fichero\n");
 		return;
 	}
-}*/
+	char linea[100];
+	int encontrado=0;
+	while (fgets(linea, 100,usuarios != NULL)){
+	
+	char campo[100];
+	int i=0, j=0;
+	
+	while(linea[i] != '\0' && linea[i != '\n']){
+		if(linea[i] =='|'){
+			campo[j]= '\0';
+			switch(j){
+				case 0:
+					strcpy(ingreso.nombre, campo);
+					break;
+				case 1:
+					strcpy(ingreso.apellido, campo);
+					break;
+				case 2:
+					strcpy(ingreso.DNI, campo);
+					break;
+				case 3:
+					strcpy(ingreso.codigo_clave, campo);
+					break;
+			}
+			j=0;
+		}else{
+			campo[j] = linea[i];
+			j++;	
+		}
+		i++;
+	}
+	campo[j]='\0';
+	
+		if (strcmp(ingreso.DNI, campo) == 0 && encontrado == 0) {
+      encontrado = 1;
+      printf("Bienvenido, %s %s.\n", ingreso.nombre, ingreso.apellido);
+      break;
+    }
+  }
+
+  if (!encontrado) {
+    printf("DNI o clave de acceso incorrectos.\n");
+  }
+		
+		fclose(usuarios);
+	}
+	
 void a_datos(){
 	typedef struct {
 		char nombre[50];
