@@ -10,7 +10,7 @@ int main(){
 	
 	int opcion1;
 	char aux, nombre_fichero[100];
-    FILE *fentrada, *fsalida, *usuarios;
+    FILE *fentrada, *fsalida;
 	
 	printf("Bienvenido al buscador ...\n");
     printf("Elige entre una de estas opciones:\n");
@@ -88,18 +88,18 @@ int main(){
 	
 		Registro registro ;
    		FILE *usuarios;
-
+	fflush(stdin);		
    printf("Ingrese su nombre:\n");
-  fgets(registro.nombre, 100, stdin);
+  gets(registro.nombre);
    
    printf("Ingrese su apellido:\n ");
-   fgets(registro.apellido, 100, stdin);
+   gets(registro.apellido);
    
    printf("Ingrese su DNI:\n");
-   	fgets(registro.DNI, 9, stdin);
+   	gets(registro.DNI);
    	
    	printf("Ingrese una clave de 4 digitos:\n");
-	fgets(registro.codigo_clave, 5, stdin);
+	gets(registro.codigo_clave);
    	
     usuarios = fopen("usuarios.txt", "a");
    
@@ -119,12 +119,12 @@ int main(){
 	} Ingreso;
 	
 	Ingreso ingreso;
-	
+	fflush(stdin);
 	printf("Ingrese su DNI:\n");
-  	fgets(ingreso.DNI, 9, stdin);
+  	gets(ingreso.DNI);
   	 
   	 printf("Ingrese una clave de 4 digitos:\n");
-  	fgets(ingreso.codigo_clave, 5, stdin);	
+  	gets(ingreso.codigo_clave);	
 
  	FILE* usuarios =fopen("usuarios.txt", "r")	;
 
