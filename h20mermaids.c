@@ -90,16 +90,16 @@ int main(){
    		FILE *usuarios;
 	fflush(stdin);		
    printf("Ingrese su nombre:\n");
-  gets(registro.nombre);
+	  gets(registro.nombre);
    
    printf("Ingrese su apellido:\n ");
-   gets(registro.apellido);
+   		gets(registro.apellido);
    
    printf("Ingrese su DNI:\n");
-   	gets(registro.DNI);
+   		gets(registro.DNI);
    	
-   	printf("Ingrese una clave de 4 digitos:\n");
-	gets(registro.codigo_clave);
+	printf("Ingrese una clave de 4 digitos:\n");
+		gets(registro.codigo_clave);
    	
     usuarios = fopen("usuarios.txt", "a");
    
