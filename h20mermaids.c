@@ -42,6 +42,7 @@ int main(){
     printf("3. Analizar datos\n");
     printf("4. Salir\n");
     scanf("%d", &opcion2);
+    
     int opcion3;
     switch (opcion2) {
     	case 1:
