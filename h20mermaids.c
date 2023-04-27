@@ -106,7 +106,7 @@ int main(){
    printf("Ingrese su apellido:\n ");
    		gets(registro.apellido);
    
-   printf("Ingrese su DNI:\n");
+   printf("Ingrese su DNI(sin la letra):\n");
    		gets(registro.DNI);
    	
 	printf("Ingrese una clave de 4 digitos:\n");
@@ -131,7 +131,7 @@ void inicio() {
 	
     Ingreso ingreso;
    
-    printf("Ingrese su DNI:\n");
+    printf("Ingrese su DNI(sin la letra):\n");
     fflush(stdin);
     fgets(ingreso.DNI, 20, stdin);
     ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; 
