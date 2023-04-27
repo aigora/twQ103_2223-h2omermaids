@@ -3,7 +3,7 @@
 #include<string.h>
 	
 	void registrar();
-	void inicio();
+	//void inicio();
 	void a_datos();
 	 
 int main(){
@@ -23,7 +23,7 @@ int main(){
     	case 1:
     		registrar()	;
     	case 2:
-    		inicio();
+    		//inicio();
     		break;
     		
     	case 3:
@@ -42,10 +42,18 @@ int main(){
     printf("3. Analizar datos\n");
     printf("4. Salir\n");
     scanf("%d", &opcion2);
-    
+    int opcion3;
     switch (opcion2) {
     	case 1:
-    		a_datos();
+    		printf("1. Agregar datos a un fichero nuevo\n");
+    		printf("2. Agregar datos a un fichero existente\n");
+    		scanf("%d", &opcion3);
+    		switch(opcion3){
+    			case 1:
+    				a_datosnew();
+    			case 2:
+    				a_datos();
+			}
     		break;
     	case 2:
     		do{
@@ -90,13 +98,13 @@ int main(){
    		FILE *usuarios;
 	fflush(stdin);		
    printf("Ingrese su nombre:\n");
-  gets(registro.nombre);
+   gets(registro.nombre);
    
-   printf("Ingrese su apellido:\n ");
-   gets(registro.apellido);
+    printf("Ingrese su apellido:\n ");
+    gets(registro.apellido);
    
-   printf("Ingrese su DNI:\n");
-   	gets(registro.DNI);
+    printf("Ingrese su DNI:\n");
+	gets(registro.DNI);
    	
    	printf("Ingrese una clave de 4 digitos:\n");
 	gets(registro.codigo_clave);
@@ -110,7 +118,7 @@ int main(){
 	}
 	
 
-	void inicio(){
+/*	void inicio(){
 		typedef struct {
 		char nombre[100];
 		char apellido[100];
@@ -177,7 +185,7 @@ int main(){
   }
 		
 		fclose(usuarios);
-	}
+	}*/
 	
 void a_datos(){
 	typedef struct {
@@ -186,7 +194,7 @@ void a_datos(){
 		float  temperatura, tanto_sal, potabilidad;
 	} Datos;
 		char nombre_fichero[100];
-		Datos a ;
+		Datos n ;
    		FILE *fp;
    	
    		
@@ -196,6 +204,45 @@ void a_datos(){
     fp= fopen(nombre_fichero, "a");
     
    	printf("Ingrese el nombre de la fuente:\n");
+   	scanf("%s", n.nombre);
+    
+	printf("Ingrese el ph de la fuente:\n");
+   	scanf("%f", &n.ph);
+  
+   	printf("Ingrese la conductividad de la fuente:\n ");
+    scanf("%f", &n.conductividad);
+  	
+  	printf("Ingrese la turbidez de la fuente:\n ");
+    scanf("%f", &n.turbidez);
+    
+    printf("Ingrese los coliformes de la fuente:\n ");
+    scanf("%f", &n.coliformes);
+    
+   	printf("Ingrese la temperatura del agua de la fuente:\n ");
+    scanf("%f", &n.temperatura);
+	
+	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
+    scanf("%f", &n.tanto_sal);
+    
+	printf("Ingrese la potabilidad de la fuente:\n ");
+    scanf("%f", &n.potabilidad);
+ 
+    fprintf(fp, "%s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n", n.nombre, n.ph, n.conductividad, n.turbidez, n.temperatura, n.tanto_sal, n.potabilidad);
+    printf("Los datos se han agregado correctamente al archivo.\n");
+	fclose(fp);
+
+   printf("\nSus datos han sido guardados\n");	
+}	
+void a_datosnew(){
+	typedef struct {
+		char nombre[50];
+		float ph, conductividad, turbidez, coliformes;
+		float  temperatura, tanto_sal, potabilidad;
+	} Datos;
+		char nombre_fichero[100];
+		Datos a ;
+   		FILE *fuentes;
+		printf("Ingrese el nombre de la fuente:\n");
    	scanf("%s", a.nombre);
     
 	printf("Ingrese el ph de la fuente:\n");
@@ -218,14 +265,13 @@ void a_datos(){
     
 	printf("Ingrese la potabilidad de la fuente:\n ");
     scanf("%f", &a.potabilidad);
- 
-    fprintf(fp, "%s %f %f %f %f %f %f\n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal, a.potabilidad);
+	
+    fuentes = fopen("fuentes.txt", "a");
+    fprintf(fuentes, "%s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal, a.potabilidad);
     printf("Los datos se han agregado correctamente al archivo.\n");
-	fclose(fp);
-
-   printf("\nSus datos han sido guardados\n");	
-}	
-
+	fclose(fuentes);
+	printf("\nSus datos han sido guardados\n");	
+	}
 	
 	
 	
