@@ -110,75 +110,53 @@ int main(){
 	}
 	
 
-	void inicio(){
-		typedef struct {
-		char nombre[100];
-		char apellido[100];
-		char DNI[9];
-		char codigo_clave[5];
-	} Ingreso;
-	
-	Ingreso ingreso;
-	fflush(stdin);
-	printf("Ingrese su DNI:\n");
-  	gets(ingreso.DNI);
-  	 
-  	 printf("Ingrese una clave de 4 digitos:\n");
-  	gets(ingreso.codigo_clave);	
+void inicio() {
+    typedef struct {
+        char nombre[100];
+        char apellido[100];
+        char DNI[9];
+        char codigo_clave[5];
+    } Ingreso;
 
- 	FILE* usuarios =fopen("usuarios.txt", "r")	;
+    Ingreso ingreso;
+    fflush(stdin);
+    printf("Ingrese su DNI:\n");
+    fgets(ingreso.DNI, 9, stdin);
+    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; // Eliminar el salto de línea del final de la entrada
 
-	if (usuarios == NULL){
-		printf("Error al abrir el fichero\n");
-		return;
-	}
-	char linea[100];
-	int encontrado=0;
-	while (fgets(linea, 100,usuarios != NULL)){
-	
-	char campo[100];
-	int i=0, j=0;
-	
-	while(linea[i] != '\0' && linea[i != '\n']){
-		if(linea[i] =='|'){
-			campo[j]= '\0';
-			switch(j){
-				case 0:
-					strcpy(ingreso.nombre, campo);
-					break;
-				case 1:
-					strcpy(ingreso.apellido, campo);
-					break;
-				case 2:
-					strcpy(ingreso.DNI, campo);
-					break;
-				case 3:
-					strcpy(ingreso.codigo_clave, campo);
-					break;
-			}
-			j=0;
-		}else{
-			campo[j] = linea[i];
-			j++;	
-		}
-		i++;
-	}
-	campo[j]='\0';
-	
-		if (strcmp(ingreso.DNI, campo) == 0 && encontrado == 0) {
-      encontrado = 1;
-      printf("Bienvenido, %s %s.\n", ingreso.nombre, ingreso.apellido);
-      break;
+    printf("Ingrese una clave de 4 digitos:\n");
+    fgets(ingreso.codigo_clave, 5, stdin);
+    ingreso.codigo_clave[strcspn(ingreso.codigo_clave, "\n")] = '\0';
+
+    FILE* usuarios = fopen("usuarios.txt", "r");
+
+    if (usuarios == NULL) {
+        printf("Error al abrir el fichero\n");
+        return;
     }
-  }
 
-  if (!encontrado) {
-    printf("DNI o clave de acceso incorrectos.\n");
-  }
-		
-		fclose(usuarios);
-	}
-	
+    char linea[100];
+    int encontrado = 0;
+    while (fgets(linea, 100, usuarios) != NULL) {
+
+        char nombre[100], apellido[100], DNI[9], codigo_clave[5];
+        if (sscanf(linea, "%s %s %s %s", nombre, apellido, DNI, codigo_clave) != 4) {
+            continue; // Ignorar las líneas que no contienen cuatro campos
+        }
+
+        if (strcmp(ingreso.DNI, DNI) == 0 && strcmp(ingreso.codigo_clave, codigo_clave) == 0) {
+            encontrado = 1;
+            printf("Bienvenido, %s %s.\n", nombre, apellido);
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("DNI o clave de acceso incorrectos.\n");
+    }
+
+    fclose(usuarios);
+}
 void a_datos(){
 	typedef struct {
 		char nombre[50];
