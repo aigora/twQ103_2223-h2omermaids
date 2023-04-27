@@ -1,10 +1,2 @@
-NOMBRE APELLIDO DNI     CLAVE DE ACCSO
-Marina Garcia 51494835C 0000
-Andrea de la Torre 01945049P 0000
-Paula Blazquez 70574804V 0000
-Marina Diaz 51515151D 2002
-Marina Perez 46464646t 2004
-paco martinez 99999999g 5555
-Andrea de la Torre 01945049P0000 0000
-Andrea de la Torre 01945049P0000 0000
-P R PP 0000
+
+
