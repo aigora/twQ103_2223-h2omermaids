@@ -13,6 +13,23 @@ int main(){
     FILE *fentrada, *fsalida;
 	
 	printf("Bienvenido al buscador ...\n");
+	
+	  printf("        ..\n");
+    printf("      ...... \n");
+    printf("    .......... \n");
+    printf("  ..............\n");
+    printf(" ......ANDREA......\n");
+    printf(".......MARIA........\n");
+    printf("....MARINA BIELSA....\n");
+    printf(".....MARINA GARCIA....\n");
+    printf(".....................\n");
+    printf(" ....................\n");
+    printf(" ....................\n");
+    printf(" ....................\n");
+    printf(" ................\n");
+    printf("   ............\n");
+    printf("        ...\n");
+    
     printf("Elige entre una de estas opciones:\n");
     printf("1. Registrarte\n");
     printf("2. Iniciar sesion\n");
