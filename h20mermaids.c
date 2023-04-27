@@ -117,12 +117,12 @@ void inicio() {
         char DNI[9];
         char codigo_clave[5];
     } Ingreso;
-
+	
     Ingreso ingreso;
     fflush(stdin);
     printf("Ingrese su DNI:\n");
     fgets(ingreso.DNI, 9, stdin);
-    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; // Eliminar el salto de línea del final de la entrada
+    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; 
 
     printf("Ingrese una clave de 4 digitos:\n");
     fgets(ingreso.codigo_clave, 5, stdin);
@@ -141,7 +141,7 @@ void inicio() {
 
         char nombre[100], apellido[100], DNI[9], codigo_clave[5];
         if (sscanf(linea, "%s %s %s %s", nombre, apellido, DNI, codigo_clave) != 4) {
-            continue; // Ignorar las líneas que no contienen cuatro campos
+            continue;
         }
 
         if (strcmp(ingreso.DNI, DNI) == 0 && strcmp(ingreso.codigo_clave, codigo_clave) == 0) {
