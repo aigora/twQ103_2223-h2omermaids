@@ -43,6 +43,10 @@ int main(){
     printf("4. Salir\n");
     scanf("%d", &opcion2);
     
+<<<<<<< HEAD
+=======
+    int opcion3;
+>>>>>>> 2473d83e59d0148135305e7e9eed7d8a4af88a46
     switch (opcion2) {
     	case 1:
     		a_datos();
