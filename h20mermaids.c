@@ -51,7 +51,6 @@ int main(){
     		switch(opcion3){
     			case 1:
     				a_datosnew();
-    				break;
     			case 2:
     				a_datos();
 			}
