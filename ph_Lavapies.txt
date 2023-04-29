@@ -1,0 +1,27 @@
+Parametros,	pH,	
+Fuente_1	6   
+Fuente_2	7.2	    
+Fuente_3	6.95	   
+Fuente_4	7.75
+Fuente_5	7.04	
+Fuente_6	6.66	
+Fuente_7	7.46	
+Fuente_8	7.56	
+Fuente_9	7.94	
+Fuente_10	7.83	
+Fuente_11	7.16	
+Fuente_12	7.46	
+Fuente_13	7.35	
+Fuente_14	6.94	
+Fuente_15	6.83
+Fuente_16	6.92
+Fuente_17	7.38
+Fuente_18	7.47	
+Fuente_19	7.67	
+Fuente_20	7.39	  
+Fuente_21	7.29	
+Fuente_22	7.49	
+Fuente_23	6.59	
+Fuente_24	7.49	
+Fuente_25	7.37	
+
