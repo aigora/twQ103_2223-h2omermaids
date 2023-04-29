@@ -108,6 +108,7 @@ int main(){
 			system("pause");
 				break;
     		    case 2:
+    		    	fentrada=fopen(ph_Lavapies, "r");
     		    columna==2;	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
