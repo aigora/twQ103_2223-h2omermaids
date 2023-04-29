@@ -100,15 +100,15 @@ int main(){
 			switch(opcion4){
 				case 1:
 				while(aux!= EOF){
-				aux=fgetc(fentrada);
-				printf("%c",aux);
-			}
-			printf("\n");
-			fclose(fentrada);
-			system("pause");
+					aux=fgetc(fentrada);
+					printf("%c",aux);
+				}
+				printf("\n");
+				fclose(fentrada);
+				system("pause");
 				break;
     		    case 2:
-    		    	fentrada=fopen(ph_Lavapies.txt, "r");
+    		    	fentrada=fopen(ph_Lavapies, "r");
     		    columna==2;	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
@@ -180,12 +180,12 @@ int main(){
    			     break;
 			   case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
-			   // if(media(pH)<6.5||media(pH)>9.5){
+			   if(media(pH)<6.5||media(pH)>9.5){
 			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable");
-				//}
-			//	else{
-			//	 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable");
-			//	}
+				}
+				else{
+				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable");
+				}
 			    break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
@@ -193,7 +193,7 @@ int main(){
 	           	}
 	           	break;
      case 3:
-    	/*	int opcion5;
+    		int opcion5;
     		printf("Elija que quiere analizar:\n");
     		printf("1.Media\n");
     		printf("2.Moda\n");
