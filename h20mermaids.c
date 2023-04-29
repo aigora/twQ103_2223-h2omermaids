@@ -85,6 +85,7 @@ int main(){
 				}
 			}while(fentrada==NULL);
 			int opcion4;
+			int columna;
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
 			printf("2. El pH\n");
@@ -104,9 +105,79 @@ int main(){
 			printf("\n");
 			fclose(fentrada);
 			system("pause");
-			}
-    		break;
-    		
+				break;
+    		    case 2:
+    		    columna==2;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+				case 3:
+    		    columna==3;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+         	   case 4:
+    		    columna==4;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+            	case 5:
+    		    columna==5;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+				case 6:
+    		    columna==6;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+				case 7:
+    		    columna==7;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+			    case 8:
+    		    columna==8;	
+  			     while (aux!=EOF) {
+  			     	aux=fgetc(fentrada);
+  			     	printf("%c",aux);
+				   }
+ 			    printf("\n");
+		     	fclose(fentrada);
+		     	system("pause");
+   			     break;
+				   }
+	
     	case 3:
     		
     		break;	
