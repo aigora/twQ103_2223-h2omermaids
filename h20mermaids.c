@@ -335,6 +335,7 @@ void inicio() {
 
 void a_datos(){
 	typedef struct {
+		int numero;
 		char nombre[50];
 		float ph, conductividad, turbidez, coliformes;
 		float  temperatura, tanto_sal, potabilidad;
@@ -349,6 +350,11 @@ void a_datos(){
     
     fp= fopen(nombre_fichero, "a");
     
+    printf("Ingrese el numero de fuentes que deseas agregar:\n");
+   	scanf("%d", &a.numero);
+   	
+   	int i;
+   	for(i=0; i<a.numero; i++){
    	printf("Ingrese el nombre de la fuente:\n");
    	scanf("%s", a.nombre);
     
@@ -371,6 +377,7 @@ void a_datos(){
     scanf("%f", &a.tanto_sal);
  
     fprintf(fp, "%s %f %f %f %f %f \n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal);
+}
     printf("Los datos se han agregado correctamente al archivo.\n");
 	fclose(fp);
 
