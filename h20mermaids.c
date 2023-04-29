@@ -95,6 +95,7 @@ int main(){
 			printf("6. La temperatura\n");
 			printf("7. Las precipitaciones\n");
 			printf("8. El porcentaje de sal en agua\n");
+			printf("9. Potabilidad\n");
 			scanf("%d", &opcion4);
 			switch(opcion4){
 				case 1:
@@ -176,10 +177,54 @@ int main(){
 		     	fclose(fentrada);
 		     	system("pause");
    			     break;
-				   }
+			   case 9:
+			   	int es_potable;
+			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
+			    if(media(pH)<6.5||media(pH)>9.5){
+			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable");
+				}
+				else{
+				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable");
+				}
+			    break;
+				default:
+    		     printf("Opcion invalida. Intente de nuevo.\n");
+    	     	 break;
+	           	}
+			      }
 	
     	case 3:
-    		
+    		int opcion5;
+    		printf("Elija que quiere analizar:\n");
+    		printf("1.Media\n");
+    		printf("2.Moda\n");
+    		printf("3.Mediana\n");
+    		printf("4.Variaza\n");
+    		printf("5.Valor máximo\n");
+    		printf("6.Valor mínimo\n");
+    		printf("7. Deseo comparar entre dos barrios\n");
+    		scanf("%d",&opcion5);
+    		swtich(opcion5){
+    			case 1:
+    				break;
+    			case 2:
+    				break;
+    			case 3:
+    				break;
+    			case 4:
+    				break;
+    			case 5:
+    				break;
+    			case 6:
+    				break;
+    			case 7:
+    				
+    				break;
+				default:
+    		     printf("Opcion invalida. Intente de nuevo.\n");
+    	     	 break;
+	           	}		
+		  		}
     		break;	
     	case 4:
     		printf("Hasta pronto\n");
