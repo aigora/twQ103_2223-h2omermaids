@@ -84,15 +84,29 @@ int main(){
 					printf("Este barrio no esta registrado.\n");
 				}
 			}while(fentrada==NULL);
-			while(aux!= EOF){
+			int opcion4;
+		    printf("Elija entre estas opciones lo que quiere consultar:\n");
+			printf("1. Todos los datos\n");
+			printf("2. El pH\n");
+			printf("3. La conductividad\n");
+			printf("4. La turbidez\n");
+			printf("5. Los coliformes\n");
+			printf("6. La temperatura\n");
+			printf("7. Las precipitaciones\n");
+			printf("8. El porcentaje de sal en agua\n");
+			scanf("%d", &opcion4);
+			switch(opcion4){
+				case 1:
+				while(aux!= EOF){
 				aux=fgetc(fentrada);
 				printf("%c",aux);
 			}
 			printf("\n");
 			fclose(fentrada);
 			system("pause");
-   
+			}
     		break;
+    		
     	case 3:
     		
     		break;	
