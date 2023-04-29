@@ -5,6 +5,7 @@
 	void registrar();
 	void inicio();
 	void a_datos();
+	void a_datos_new();
 	 
 int main(){
 	
@@ -57,13 +58,17 @@ int main(){
     printf("1. Agregar datos\n");
     printf("2. Consultar datos\n");
     printf("3. Analizar datos\n");
-    printf("4. Salir\n");
+    printf("4. Comparacion de datos\n");
+    printf("5. Salir\n");
     scanf("%d", &opcion2);
     
     int opcion3;
-
+	int opcion4; 
+	int opcion5;
+	
     switch (opcion2) {
     	case 1:
+    		printf("Elija una opcion de la siguientes para agregar datos\n");
     		printf("1. Agregar datos a un fichero nuevo\n");
     		printf("2. Agregar datos a un fichero existente\n");
     		scanf("%d", &opcion3);
@@ -84,7 +89,6 @@ int main(){
 					printf("Este barrio no esta registrado.\n");
 				}
 			}while(fentrada==NULL);
-			int opcion4;
 			int columna;
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
@@ -108,7 +112,7 @@ int main(){
 				system("pause");
 				break;
     		    case 2:
-    		    	fentrada=fopen(ph_Lavapies, "r");
+    		    	fentrada=fopen(nombre_fichero, "r");
     		    columna==2;	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
@@ -178,7 +182,7 @@ int main(){
 		     	fclose(fentrada);
 		     	system("pause");
    			     break;
-			   case 9:
+			  /* case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
 			   if(media(pH)<6.5||media(pH)>9.5){
 			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable");
@@ -189,11 +193,10 @@ int main(){
 			    break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
-    	     	 break;
+    	     	 break;*/
 	           	}
 	           	break;
      case 3:
-    		int opcion5;
     		printf("Elija que quiere analizar:\n");
     		printf("1.Media\n");
     		printf("2.Moda\n");
@@ -201,7 +204,6 @@ int main(){
     		printf("4.Variaza\n");
     		printf("5.Valor maximo\n");
     		printf("6.Valor minimo\n");
-    		printf("7. Deseo comparar entre dos barrios\n");
     		scanf("%d",&opcion5);
     		switch(opcion5) {
     			case 1:
@@ -216,16 +218,15 @@ int main(){
     				break;
     			case 6:
     				break;
-    			case 7:
-    				
-    				break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
     	     	 break;
-	           	}*/		
+	           	}	
 		  	break;	
-    			
     	case 4:
+			printf("A continuacion podras elegir entre que barrios comparar");
+			break;
+    	case 5:
     		printf("Hasta pronto\n");
     		break;
     	default:
@@ -274,9 +275,8 @@ void inicio() {
         char DNI[20];
         char codigo_clave[10];
     } Ingreso;
-	
     Ingreso ingreso;
-   
+
     printf("Ingrese su DNI(sin la letra):\n");
     fflush(stdin);
     fgets(ingreso.DNI, 20, stdin);
@@ -309,10 +309,11 @@ void inicio() {
             break;
         }
     }
-     do{ 
     
-	 printf("DNI o clave de acceso incorrectos.\n");
-     printf("Ingrese su DNI(sin la letra):\n");
+    do{ 
+    
+	printf("DNI o clave de acceso incorrectos.\n");
+    printf("Ingrese su DNI(sin la letra):\n");
     fflush(stdin);
     fgets(ingreso.DNI, 20, stdin);
     ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; 
@@ -368,11 +369,8 @@ void a_datos(){
 	
 	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
     scanf("%f", &a.tanto_sal);
-    
-	printf("Ingrese la potabilidad de la fuente:\n ");
-    scanf("%f", &a.potabilidad);
  
-    fprintf(fp, "%s %f %f %f %f %f %f\n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal, a.potabilidad);
+    fprintf(fp, "%s %f %f %f %f %f \n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal);
     printf("Los datos se han agregado correctamente al archivo.\n");
 	fclose(fp);
 
@@ -381,17 +379,32 @@ void a_datos(){
 
 void a_datosnew(){
 	typedef struct {
-		char nombre[50];
+		char fuente[50], nombre_fichero[50];
+		int numero;
 		float ph, conductividad, turbidez, coliformes;
 		float  temperatura, tanto_sal;
 	} Datos;
 		char nombre_fichero[100];
 		Datos n ;
-   		FILE *fuentes;
-		printf("Ingrese el nombre de la fuente:\n");
-   	scanf("%s", n.nombre);
-    
+   		FILE *fp;
+   	
+   	printf("Ingrese del nuevo fichero (formato barrio.txt):\n");
+   	scanf("%s", nombre_fichero); 
+   	
+   	fp = fopen(nombre_fichero, "w");
+   	if(fp==NULL){
+   		printf("Error al abrir el fichero, \n");
+   		return;
+	}
+	printf("Ingrese el numero de fuentes que deseas agregar:\n");
+   	scanf("%d", &n.numero);
+   	
+    int i;
+    for(i=0; i<n.numero; i++){
+    printf("Ingrese el nombre de la fuente:\n");
+   	scanf("%s", n.fuente);
 	printf("Ingrese el ph de la fuente:\n");
+	fflush(stdin);
    	scanf("%f", &n.ph);
   
    	printf("Ingrese la conductividad de la fuente:\n ");
@@ -408,13 +421,14 @@ void a_datosnew(){
 	
 	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
     scanf("%f", &n.tanto_sal);
+    fprintf(fp, "%s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n", n.fuente, n.ph, n.conductividad, n.turbidez, n.temperatura, n.tanto_sal);
+}
 	
-    fuentes = fopen("fuentes.txt", "a");
-    fprintf(fuentes, "%s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n", n.nombre, n.ph, n.conductividad, n.turbidez, n.temperatura, n.tanto_sal);
+
     printf("Los datos se han agregado correctamente al archivo.\n");
-	fclose(fuentes);
+	fclose(fp);
 	printf("\nSus datos han sido guardados\n");	
-	}	
+}	
 
 
 	
