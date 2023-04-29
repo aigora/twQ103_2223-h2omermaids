@@ -1,0 +1,28 @@
+Parametros,	Conductividad, 
+Fuente_1 	100    
+Fuente_2	158	
+Fuente_3	269	
+Fuente_4	239	
+Fuente_5	194	
+Fuente_6    163	
+Fuente_7	281	
+Fuente_8	161
+Fuente_9	121
+Fuente_10	103	
+Fuente_11	200	
+Fuente_12	214	
+Fuente_13	116	
+Fuente_14	117	
+Fuente_15	112
+Fuente_16	108
+Fuente_17	203	
+Fuente_18	269	
+Fuente_19	244	
+Fuente_20	219	
+Fuente_21	201	
+Fuente_22	121	
+Fuente_23	141	
+Fuente_24	166	
+Fuente_25	173
+
+
