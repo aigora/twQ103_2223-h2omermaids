@@ -35,7 +35,8 @@ int main(){
     printf("Elige entre una de estas opciones:\n");
     printf("1. Registrarte\n");
     printf("2. Iniciar sesion\n");
-    printf("3. Salir\n");
+    printf("3.Comenzar sin registrarse\n");
+    printf("4. Salir\n");
     scanf("%d", &opcion1);
 
     switch (opcion1) {
@@ -44,8 +45,9 @@ int main(){
     	case 2:
     		inicio();
     		break;
-    		
     	case 3:
+		break;	
+    	case 4:
     		printf("Hasta pronto\n");
     		break;
     	default:
@@ -323,10 +325,9 @@ void inicio() {
 }
 void a_datos(){
 	typedef struct {
-		int numero;
-		char nombre[50];
-		float ph, conductividad, turbidez, coliformes;
-		float  temperatura, tanto_sal, potabilidad;
+		int numero, ph, conductividad, turbidez, coliformes;
+		char fuente[50];
+		float  temperatura, tanto_sal, precipitaciones;
 	} Datos;
 		char nombre_fichero[100];
 		Datos a ;
@@ -344,27 +345,30 @@ void a_datos(){
    	int i;
    	for(i=0; i<a.numero; i++){
    	printf("Ingrese el nombre de la fuente:\n");
-   	scanf("%s", a.nombre);
+   	scanf("%s", a.fuente);
     
 	printf("Ingrese el ph de la fuente:\n");
-   	scanf("%f", &a.ph);
+   	scanf("%d", &a.ph);
   
    	printf("Ingrese la conductividad de la fuente:\n ");
-    scanf("%f", &a.conductividad);
+    scanf("%d", &a.conductividad);
   	
   	printf("Ingrese la turbidez de la fuente:\n ");
-    scanf("%f", &a.turbidez);
+    scanf("%d", &a.turbidez);
     
     printf("Ingrese los coliformes de la fuente:\n ");
-    scanf("%f", &a.coliformes);
+    scanf("%d", &a.coliformes);
     
    	printf("Ingrese la temperatura del agua de la fuente:\n ");
     scanf("%f", &a.temperatura);
+    
+    printf("Ingrese las precipitaciones del agua de la fuente:\n ");
+    scanf("%f", &a.precipitaciones);
 	
 	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
     scanf("%f", &a.tanto_sal);
  
-    fprintf(fp, "%s %f %f %f %f %f \n", a.nombre, a.ph, a.conductividad, a.turbidez, a.temperatura, a.tanto_sal);
+    fprintf(fp, "%s\t %d\t %d\t %d\t %d\t %f\t %f\t %f\n", a.fuente, a.ph, a.conductividad, a.turbidez, a.coliformes, a.temperatura, a.precipitaciones, a.tanto_sal);
 }
     printf("Los datos se han agregado correctamente al archivo.\n");
 	fclose(fp);
@@ -375,9 +379,8 @@ void a_datos(){
 void a_datosnew(){
 	typedef struct {
 		char fuente[50], nombre_fichero[50];
-		int numero;
-		float ph, conductividad, turbidez, coliformes;
-		float  temperatura, tanto_sal;
+		int numero, ph, conductividad, turbidez, coliformes;
+		float precipitaciones, temperatura, tanto_sal;
 	} Datos;
 		char nombre_fichero[100];
 		Datos n ;
@@ -398,25 +401,29 @@ void a_datosnew(){
     for(i=0; i<n.numero; i++){
     printf("Ingrese el nombre de la fuente:\n");
    	scanf("%s", n.fuente);
+   	
 	printf("Ingrese el ph de la fuente:\n");
 	fflush(stdin);
-   	scanf("%f", &n.ph);
-  
+   	scanf("%d", &n.ph);
+   	
    	printf("Ingrese la conductividad de la fuente:\n ");
-    scanf("%f", &n.conductividad);
-  	
+    scanf("%d", &n.conductividad);
+    
   	printf("Ingrese la turbidez de la fuente:\n ");
-    scanf("%f", &n.turbidez);
+    scanf("%d", &n.turbidez);
     
     printf("Ingrese los coliformes de la fuente:\n ");
-    scanf("%f", &n.coliformes);
+    scanf("%d", &n.coliformes);
     
    	printf("Ingrese la temperatura del agua de la fuente:\n ");
     scanf("%f", &n.temperatura);
+    
+    printf("Ingrese las precipitaciones del agua de la fuente:\n ");
+    scanf("%f", &n.precipitaciones);
 	
 	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
     scanf("%f", &n.tanto_sal);
-    fprintf(fp, "%s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n", n.fuente, n.ph, n.conductividad, n.turbidez, n.temperatura, n.tanto_sal);
+    fprintf(fp, "%s\t %d\t %d\t %d\t %d\t %f\t %f\t %f\n", n.fuente, n.ph, n.conductividad, n.turbidez, n.coliformes, n.temperatura, n.precipitaciones, n.tanto_sal);
 }
 	
 
