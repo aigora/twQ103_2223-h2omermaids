@@ -277,10 +277,12 @@ void inicio() {
     } Ingreso;
     Ingreso ingreso;
 
-    printf("Ingrese su DNI(sin la letra):\n");
+    fflush(stdin);
+   
+    printf("Ingrese su DNI (sin la letra):\n");
     fflush(stdin);
     fgets(ingreso.DNI, 20, stdin);
-    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; 
+    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0';
 
     printf("Ingrese una clave de 4 digitos:\n");
     fflush(stdin);
@@ -288,8 +290,8 @@ void inicio() {
     ingreso.codigo_clave[strcspn(ingreso.codigo_clave, "\n")] = '\0';
 
     FILE* usuarios = fopen("usuarios.txt", "r");
-
-    if (usuarios == NULL) {
+    
+   if (usuarios == NULL) {
         printf("Error al abrir el fichero\n");
         return;
     }
@@ -309,30 +311,14 @@ void inicio() {
             break;
         }
     }
-    
-    do{ 
-    
-	printf("DNI o clave de acceso incorrectos.\n");
-    printf("Ingrese su DNI(sin la letra):\n");
-    fflush(stdin);
-    fgets(ingreso.DNI, 20, stdin);
-    ingreso.DNI[strcspn(ingreso.DNI, "\n")] = '\0'; 
-    printf("Ingrese una clave de 4 digitos:\n");
-    fflush(stdin);
-    fgets(ingreso.codigo_clave, 10, stdin);
-    ingreso.codigo_clave[strcspn(ingreso.codigo_clave, "\n")] = '\0';
-    
-     FILE* usuarios = fopen("usuarios.txt", "r");
 
-    if (usuarios == NULL) {
-        printf("Error al abrir el fichero\n");
-        return;
+    if (encontrado != 1) {
+        printf("DNI o clave de acceso incorrectos.\n");
     }
-	}while(encontrado == 1);
 
     fclose(usuarios);
+      
 }
-
 void a_datos(){
 	typedef struct {
 		int numero;
