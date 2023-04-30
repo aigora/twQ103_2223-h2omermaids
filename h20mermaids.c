@@ -6,6 +6,7 @@
 	void inicio();
 	void a_datos();
 	void a_datos_new();
+	void media();
 	 
 int main(){
 	
@@ -207,6 +208,7 @@ int main(){
     		scanf("%d",&opcion5);
     		switch(opcion5) {
     			case 1:
+    				media();
     				break;
     			case 2:
     				break;
@@ -423,7 +425,64 @@ void a_datosnew(){
 	printf("\nSus datos han sido guardados\n");	
 }	
 
+		void media(){
+				FILE *fichero;
+    char linea[1000];
+    float contador = 0;
+    float num = 0;
+    float suma = 0;
+    float media = 0;
+	char nombre_fichero[100];
+    // Abrimos el fichero
+   printf("Introduzca el barrio en el que deseas realizar la media (acabado en .txt): \n");
+    scanf("%s", nombre_fichero);
+    fichero = fopen(nombre_fichero,"r");
 
+    if(fichero==NULL){
+   		printf("Error al abrir el fichero, \n");
+   		return;
+	}
+    /* Ignorar la primera linea */
+    if (fgets(linea, 1000, fichero) == NULL) {
+        printf( "El fichero esta vacio.\n" );
+        return;
+    }
+	
+	 while (fgets(linea, 1000, fichero)) {
+
+        // Dividir la linea en palabras 
+        char *palabra = strtok(linea, "\t");
+
+        // Seleccionar la segunda palabra(media
+        palabra = strtok(NULL, " ");
+        palabra = strtok(palabra, "\t");
+
+        /*
+            Comprobamos que la palabra no es nula ni el final de la linea
+            En caso de no serlo, pasamos la palabra a float(eso es lo que hace la funcion atof) y sumamos
+        */ 
+        if (palabra != NULL && palabra[0] != '\0') {
+            num = atof(palabra);
+            suma += num;
+        }
+
+        // printf("%s\n",palabra);
+        contador = contador + 1;
+        
+        // Salimos del bucle una vez llegado al final del fichero
+        if(feof(fichero)){
+            break;
+        }
+    }
+
+    // Calculamos la media e imprimimos por pantalla el resultado
+    media = suma/contador;
+    printf("La media es: %f\n", media);
+
+    // Cerramos el fichero
+    fclose(fichero);
+
+		}
 	
 	
 
