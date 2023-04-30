@@ -433,7 +433,7 @@ void a_datosnew(){
     float suma = 0;
     float media = 0;
 	char nombre_fichero[100];
-    // Abrimos el fichero
+	
    printf("Introduzca el barrio en el que deseas realizar la media (acabado en .txt): \n");
     scanf("%s", nombre_fichero);
     fichero = fopen(nombre_fichero,"r");
