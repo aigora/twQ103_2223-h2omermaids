@@ -497,7 +497,7 @@ void a_datosnew(){
 
     // Calculamos la media e imprimimos por pantalla el resultado
     media = suma/contador;
-    printf("La media es: %f\n", media);
+    printf("La media del phes: %f\n", media);
 
     // Cerramos el fichero
     fclose(fichero);
