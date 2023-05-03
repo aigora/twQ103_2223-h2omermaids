@@ -7,6 +7,12 @@
 	void a_datos();
 	void a_datos_new();
 	void media();
+	
+		typedef struct {
+    char fuente[50];
+    int conductividad, turbidez, coliformes;
+    float ph, precipitaciones, temperatura, tanto_sal;
+} Datos;
 	 
 int main(){
 	
@@ -325,73 +331,94 @@ void inicio() {
       
 }
 void a_datos(){
-	typedef struct {
-		int numero, conductividad, turbidez, coliformes;
-		char fuente[50];
-		float  ph, temperatura, tanto_sal, precipitaciones;
-	} Datos;
-		char nombre_fichero[100];
-		Datos a ;
-   		FILE *fp;
-   	
-   		
-    printf("Introduzca el barrio en el que deseas agregar datos (acabado en .txt): \n");
-    scanf("%s", nombre_fichero);
+	 char nombre_fichero2[100];
+	 int j, n2;
+		Datos a_datoss[100] ;
+   		FILE *fichero;
+
+
+   printf("Introduzca el barrio en el que deseas agregar datos (acabado en .txt): \n");
+    scanf("%s", nombre_fichero2);
     
-    fp= fopen(nombre_fichero, "a");
-    
-    printf("Ingrese el numero de fuentes que deseas agregar:\n");
-   	scanf("%d", &a.numero);
-   	
-   	int i;
-   	for(i=0; i<a.numero; i++){
-   	printf("Ingrese el nombre de la fuente:\n");
-   	scanf("%s", a.fuente);
-    do{
-	printf("Ingrese el ph de la fuente:\n");
-   	scanf("%f", &a.ph);
-	}while(a.ph<0);
-	do{
-   	printf("Ingrese la conductividad de la fuente:\n ");
-    scanf("%d", &a.conductividad);
-    }while(a.conductividad<0);
-    do{
-  	printf("Ingrese la turbidez de la fuente:\n ");
-    scanf("%d", &a.turbidez);
-	}while(a.turbidez<0);
-	do{
-    printf("Ingrese los coliformes de la fuente:\n ");
-    scanf("%d", &a.coliformes);
-    }while(a.coliformes<0);
-    
-   	printf("Ingrese la temperatura del agua de la fuente:\n ");
-    scanf("%f", &a.temperatura);
-    do{
-    printf("Ingrese las precipitaciones del agua de la fuente:\n ");
-    scanf("%f", &a.precipitaciones);
-	}while(a.precipitaciones<0);
-	do{
-	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
-    scanf("%f", &a.tanto_sal);
-    }while(a.tanto_sal<0);
- 
-    fprintf(fp, "%s\t %.2f\t %d\t %d\t %d\t %f\t %f\t %f\n", a.fuente, a.ph, a.conductividad, a.turbidez, a.coliformes, a.temperatura, a.precipitaciones, a.tanto_sal);
-}
-    printf("Los datos se han agregado correctamente al archivo.\n");
-	fclose(fp);
+    fichero= fopen(nombre_fichero2, "a");
+
+    if(fichero == NULL){
+        printf("Error al abrir el fichero.\n");
+        return 1;
+    }
+
+    printf("Ingrese el número de fuentes que desea agregar:\n");
+    scanf("%d", &n2);
+
+    for(j = 0; j < n2; j++){
+        printf("Ingrese el nombre de la fuente:\n");
+        scanf("%s", a_datoss[j].fuente);
+
+        do {
+            printf("Ingrese el pH de la fuente:\n");
+            scanf("%f", &a_datoss[j].ph);
+        } while(a_datoss[j].ph < 0);
+
+        do {
+            printf("Ingrese la conductividad de la fuente:\n ");
+            scanf("%d", &a_datoss[j].conductividad);
+        } while(a_datoss[j].conductividad < 0);
+
+        do {
+            printf("Ingrese la turbidez de la fuente:\n ");
+            scanf("%d", &a_datoss[j].turbidez);
+        } while(a_datoss[j].turbidez < 0);
+
+        do {
+            printf("Ingrese los coliformes de la fuente:\n ");
+            scanf("%d", &a_datoss[j].coliformes);
+        } while(a_datoss[j].coliformes < 0);
+
+        printf("Ingrese la temperatura del agua de la fuente:\n ");
+        scanf("%f", &a_datoss[j].temperatura);
+
+        do {
+            printf("Ingrese las precipitaciones del agua de la fuente:\n ");
+            scanf("%f", &a_datoss[j].precipitaciones);
+        } while(a_datoss[j].precipitaciones < 0);
+
+        do {
+            printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
+            scanf("%f", &a_datoss[j].tanto_sal);
+        } while(a_datoss[j].tanto_sal < 0);
+
+        // Escribir los datos en el archivo
+        fprintf(fichero, "%s\t%.2f\t%d\t%d\t%d\t%.2f\t%.2f\t%.2f\n", a_datoss[j].fuente, a_datoss[j].ph, a_datoss[j].conductividad, a_datoss[j].turbidez, 
+		a_datoss[j].coliformes,a_datoss[j].temperatura, a_datoss[j].precipitaciones, a_datoss[j].tanto_sal);
+    }
+
+    // Cerrar el archivo
+    fclose(fichero);
+
+    // Leer los datos del archivo y almacenarlos en el vector de estructuras
+    fichero = fopen(nombre_fichero2, "r");
+    if(fichero == NULL){
+        printf("Error al abrir el fichero.\n");
+        return;
+    }
+
+    for(j = 0; j < n2; j++){
+        fscanf(fichero, "%s%f%d%d%d%f%f%f", a_datoss[j].fuente, &a_datoss[j].ph, &a_datoss[j].conductividad, &a_datoss[j].turbidez, 
+		&a_datoss[j].coliformes, &a_datoss[j].temperatura, &a_datoss[j].precipitaciones, &a_datoss[j].tanto_sal);
+	
+		}
+			printf("Los datos se han agregado correctamente al archivo.\n");
+	fclose(fichero);
 
    printf("\nSus datos han sido guardados\n");	
-}	
+	}
+	
 
 void a_datosnew(){
-	typedef struct {
-    char fuente[50];
-    int conductividad, turbidez, coliformes;
-    float ph, precipitaciones, temperatura, tanto_sal;
-} Datos;
+	
 
     int i, n;
-    Datos datos[100]; // vector de estructuras para almacenar los datos
+    Datos a_datosneww[100]; // vector de estructuras para almacenar los datos
     FILE *fptr; // puntero de archivo
     char nombre_fichero[100];
 
@@ -409,44 +436,44 @@ void a_datosnew(){
 
     for(i = 0; i < n; i++){
         printf("Ingrese el nombre de la fuente:\n");
-        scanf("%s", datos[i].fuente);
+        scanf("%s", a_datosneww[i].fuente);
 
         do {
             printf("Ingrese el pH de la fuente:\n");
-            scanf("%f", &datos[i].ph);
-        } while(datos[i].ph < 0);
+            scanf("%f", &a_datosneww[i].ph);
+        } while(a_datosneww[i].ph < 0);
 
         do {
             printf("Ingrese la conductividad de la fuente:\n ");
-            scanf("%d", &datos[i].conductividad);
-        } while(datos[i].conductividad < 0);
+            scanf("%d", &a_datosneww[i].conductividad);
+        } while(a_datosneww[i].conductividad < 0);
 
         do {
             printf("Ingrese la turbidez de la fuente:\n ");
-            scanf("%d", &datos[i].turbidez);
-        } while(datos[i].turbidez < 0);
+            scanf("%d", &a_datosneww[i].turbidez);
+        } while(a_datosneww[i].turbidez < 0);
 
         do {
             printf("Ingrese los coliformes de la fuente:\n ");
-            scanf("%d", &datos[i].coliformes);
-        } while(datos[i].coliformes < 0);
+            scanf("%d", &a_datosneww[i].coliformes);
+        } while(a_datosneww[i].coliformes < 0);
 
         printf("Ingrese la temperatura del agua de la fuente:\n ");
-        scanf("%f", &datos[i].temperatura);
+        scanf("%f", &a_datosneww[i].temperatura);
 
         do {
             printf("Ingrese las precipitaciones del agua de la fuente:\n ");
-            scanf("%f", &datos[i].precipitaciones);
-        } while(datos[i].precipitaciones < 0);
+            scanf("%f", &a_datosneww[i].precipitaciones);
+        } while(a_datosneww[i].precipitaciones < 0);
 
         do {
             printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
-            scanf("%f", &datos[i].tanto_sal);
-        } while(datos[i].tanto_sal < 0);
+            scanf("%f", &a_datosneww[i].tanto_sal);
+        } while(a_datosneww[i].tanto_sal < 0);
 
         // Escribir los datos en el archivo
-        fprintf(fptr, "%s\t%.2f\t%d\t%d\t%d\t%.2f\t%.2f\t%.2f\n", datos[i].fuente, datos[i].ph, datos[i].conductividad, datos[i].turbidez, datos[i].coliformes,
-		 datos[i].temperatura, datos[i].precipitaciones, datos[i].tanto_sal);
+        fprintf(fptr, "%s\t%.2f\t%d\t%d\t%d\t%.2f\t%.2f\t%.2f\n", a_datosneww[i].fuente, a_datosneww[i].ph, a_datosneww[i].conductividad, a_datosneww[i].turbidez, 
+		a_datosneww[i].coliformes,a_datosneww[i].temperatura, a_datosneww[i].precipitaciones, a_datosneww[i].tanto_sal);
     }
 
     // Cerrar el archivo
@@ -460,10 +487,15 @@ void a_datosnew(){
     }
 
     for(i = 0; i < n; i++){
-        fscanf(fptr, "%s%f%d%d%d%f%f%f", datos[i].fuente, &datos[i].ph, &datos[i].conductividad, &datos[i].turbidez, &datos[i].coliformes, 
-	&datos[i].temperatura, &datos[i].precipitaciones , &datos[i].tanto_sal);
+        fscanf(fptr, "%s%f%d%d%d%f%f%f", a_datosneww[i].fuente, &a_datosneww[i].ph, &a_datosneww[i].conductividad, &a_datosneww[i].turbidez, 
+		&a_datosneww[i].coliformes, &a_datosneww[i].temperatura, &a_datosneww[i].precipitaciones, &a_datosneww[i].tanto_sal);
 	
 		}
+		
+		printf("Los datos se han agregado correctamente al archivo.\n");
+	fclose(fptr);
+
+   printf("\nSus datos han sido guardados\n");	
 	}
 	
 		void media(){
