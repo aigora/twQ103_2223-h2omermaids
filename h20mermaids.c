@@ -385,66 +385,87 @@ void a_datos(){
 
 void a_datosnew(){
 	typedef struct {
-		char fuente[50], nombre_fichero[50];
-		int numero, conductividad, turbidez, coliformes;
-		float ph, precipitaciones, temperatura, tanto_sal;
-	} Datos;
-		char nombre_fichero[100];
-		Datos n ;
-   		FILE *fp;
-   	
-   	printf("Ingrese del nuevo fichero (formato barrio.txt):\n");
-   	scanf("%s", nombre_fichero); 
-   	
-   	fp = fopen(nombre_fichero, "w");
-   	if(fp==NULL){
-   		printf("Error al abrir el fichero, \n");
-   		return;
-	}
-	printf("Ingrese el numero de fuentes que deseas agregar:\n");
-   	scanf("%d", &n.numero);
-   	
-    int i;
-   	for(i=0; i<n.numero; i++){
-   	printf("Ingrese el nombre de la fuente:\n");
-   	scanf("%s", n.fuente);
-    do{
-	printf("Ingrese el ph de la fuente:\n");
-   	scanf("%f", &n.ph);
-	}while(n.ph<0);
-	do{
-   	printf("Ingrese la conductividad de la fuente:\n ");
-    scanf("%d", &n.conductividad);
-    }while(n.conductividad<0);
-    do{
-  	printf("Ingrese la turbidez de la fuente:\n ");
-    scanf("%d", &n.turbidez);
-	}while(n.turbidez<0);
-	do{
-    printf("Ingrese los coliformes de la fuente:\n ");
-    scanf("%d", &n.coliformes);
-    }while(n.coliformes<0);
-    
-   	printf("Ingrese la temperatura del agua de la fuente:\n ");
-    scanf("%f", &n.temperatura);
-    do{
-    printf("Ingrese las precipitaciones del agua de la fuente:\n ");
-    scanf("%f", &n.precipitaciones);
-	}while(n.precipitaciones<0);
-	do{
-	printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
-    scanf("%f", &n.tanto_sal);
-    }while(n.tanto_sal<0);
-    
-    fprintf(fp, "%s\t %.2f\t %d\t %d\t %d\t %f\t %f\t %f\n", n.fuente, n.ph, n.conductividad, n.turbidez, n.coliformes, n.temperatura, n.precipitaciones, n.tanto_sal);
-}
+    char fuente[50];
+    int conductividad, turbidez, coliformes;
+    float ph, precipitaciones, temperatura, tanto_sal;
+} Datos;
+
+    int i, n;
+    Datos datos[100]; // vector de estructuras para almacenar los datos
+    FILE *fptr; // puntero de archivo
+    char nombre_fichero[100];
+
+    printf("Ingrese el nombre del nuevo fichero (formato barrio.txt):\n");
+    scanf("%s", nombre_fichero); 
+
+    fptr = fopen(nombre_fichero, "w");
+    if(fptr == NULL){
+        printf("Error al abrir el fichero.\n");
+        return 1;
+    }
+
+    printf("Ingrese el número de fuentes que desea agregar:\n");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++){
+        printf("Ingrese el nombre de la fuente:\n");
+        scanf("%s", datos[i].fuente);
+
+        do {
+            printf("Ingrese el pH de la fuente:\n");
+            scanf("%f", &datos[i].ph);
+        } while(datos[i].ph < 0);
+
+        do {
+            printf("Ingrese la conductividad de la fuente:\n ");
+            scanf("%d", &datos[i].conductividad);
+        } while(datos[i].conductividad < 0);
+
+        do {
+            printf("Ingrese la turbidez de la fuente:\n ");
+            scanf("%d", &datos[i].turbidez);
+        } while(datos[i].turbidez < 0);
+
+        do {
+            printf("Ingrese los coliformes de la fuente:\n ");
+            scanf("%d", &datos[i].coliformes);
+        } while(datos[i].coliformes < 0);
+
+        printf("Ingrese la temperatura del agua de la fuente:\n ");
+        scanf("%f", &datos[i].temperatura);
+
+        do {
+            printf("Ingrese las precipitaciones del agua de la fuente:\n ");
+            scanf("%f", &datos[i].precipitaciones);
+        } while(datos[i].precipitaciones < 0);
+
+        do {
+            printf("Ingrese el porcentaje de sal del agua de la fuente:\n ");
+            scanf("%f", &datos[i].tanto_sal);
+        } while(datos[i].tanto_sal < 0);
+
+        // Escribir los datos en el archivo
+        fprintf(fptr, "%s\t%.2f\t%d\t%d\t%d\t%.2f\t%.2f\t%.2f\n", datos[i].fuente, datos[i].ph, datos[i].conductividad, datos[i].turbidez, datos[i].coliformes,
+		 datos[i].temperatura, datos[i].precipitaciones, datos[i].tanto_sal);
+    }
+
+    // Cerrar el archivo
+    fclose(fptr);
+
+    // Leer los datos del archivo y almacenarlos en el vector de estructuras
+    fptr = fopen(nombre_fichero, "r");
+    if(fptr == NULL){
+        printf("Error al abrir el fichero.\n");
+        return;
+    }
+
+    for(i = 0; i < n; i++){
+        fscanf(fptr, "%s%f%d%d%d%f%f%f", datos[i].fuente, &datos[i].ph, &datos[i].conductividad, &datos[i].turbidez, &datos[i].coliformes, 
+	&datos[i].temperatura, &datos[i].precipitaciones , &datos[i].tanto_sal);
 	
-
-    printf("Los datos se han agregado correctamente al archivo.\n");
-	fclose(fp);
-	printf("\nSus datos han sido guardados\n");	
-}	
-
+		}
+	}
+	
 		void media(){
 				FILE *fichero;
     char linea[1000];
