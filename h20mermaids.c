@@ -6,20 +6,42 @@
 	void inicio();
 	void a_datos();
 	void a_datos_new();
-	void media();
+	//void media();
 	
 		typedef struct {
     char fuente[50];
     int conductividad, turbidez, coliformes;
     float ph, precipitaciones, temperatura, tanto_sal;
 } Datos;
+
+typedef struct datos {
+ 	char fuentes [100];
+ 	float pH;
+ 	int conductividad;
+ 	int turbidez;
+ 	int coliformes;
+ 	float temperatura;
+ 	float precipitaciones;
+ 	float tanto_en_sal;
+ }datos;
+
+float media (struct datos* d, int);
+//float moda (struct datos* d, int);
+float mediana (struct datos* d, int);
+float varianza (struct datos* d, int);
+float maximo (struct datos* d, int);
+float minimo (struct datos* d, int); 
 	 
 int main(){
 	
 	int opcion1;
 	char aux, nombre_fichero[100];
     FILE *fentrada, *fsalida;
-	
+    datos d[25]; 
+   	char nada[100];
+	int i, z;
+    
+   	
 	printf("Bienvenido al buscador ...\n");
 	
 	  printf("        ..\n");
@@ -98,6 +120,7 @@ int main(){
 					printf("Este barrio no esta registrado.\n");
 				}
 			}while(fentrada==NULL);
+        	
 			int columna;
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
@@ -206,27 +229,52 @@ int main(){
 	           	}
 	           	break;
      case 3:
+     	do{
+    		printf("Introduzca el barrio a consultar (acabado en .txt). \n");
+    		scanf("%s", nombre_fichero);
+			fentrada = fopen(nombre_fichero, "r");
+			if(fentrada==NULL){
+			printf("Este barrio no esta registrado.\n");
+			}
+		}while(fentrada==NULL);
+     	//Quitar los titulos del fichero
+     	for(z=0; z<8; z++){
+		    fscanf(fentrada, "%s, ", nada);	
+		}
+        //Convertir datos a struct
+		for (i=0; i<25; i++){
+			fscanf(fentrada, "%s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
+    		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal); 
+		}
+    	fclose(fentrada);
+       	(fsalida);
+     	
     		printf("Elija que quiere analizar:\n");
     		printf("1.Media\n");
     		printf("2.Moda\n");
     		printf("3.Mediana\n");
-    		printf("4.Variaza\n");
+    		printf("4.Varianza\n");
     		printf("5.Valor maximo\n");
     		printf("6.Valor minimo\n");
     		scanf("%d",&opcion5);
     		switch(opcion5) {
     			case 1:
-    				media();
+    				printf("Resultado de la media: %.2f\n", media(d, 25));
     				break;
-    			case 2:
+    			case 2:				
+		            printf("Resultado de la moda: %.2f\n", moda(d, 25));
     				break;
     			case 3:
+    					
     				break;
     			case 4:
+	            	printf("Resultado de la varianza: %.2f\n", varianza(d, 25));
     				break;
     			case 5:
+            		printf("Resultado de la maximo: %.2f\n", maximo(d, 25));	
     				break;
-    			case 6:
+    			case 6:	
+            		printf("Resultado de la minimo: %.2f\n", minimo(d, 25));
     				break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
@@ -498,7 +546,7 @@ void a_datosnew(){
    printf("\nSus datos han sido guardados\n");	
 	}
 	
-		void media(){
+	/*	void media(){
 				FILE *fichero;
     char linea[1000];
     float contador = 0;
@@ -515,7 +563,7 @@ void a_datosnew(){
    		printf("Error al abrir el fichero, \n");
    		return;
 	}
-    /* Ignorar la primera linea */
+    //Ignorar la primera linea 
     if (fgets(linea, 1000, fichero) == NULL) {
         printf( "El fichero esta vacio.\n" );
         return;
@@ -530,10 +578,10 @@ void a_datosnew(){
         palabra = strtok(NULL, " ");
         palabra = strtok(palabra, "\t");
 
-        /*
+        
             Comprobamos que la palabra no es nula ni el final de la linea
             En caso de no serlo, pasamos la palabra a float(eso es lo que hace la funcion atof) y sumamos
-        */ 
+        
         if (palabra != NULL && palabra[0] != '\0') {
             num = atof(palabra);
             suma += num;
@@ -555,7 +603,91 @@ void a_datosnew(){
     // Cerramos el fichero
     fclose(fichero);
 
-		}
+		} */
+		
+		
+
+float media(struct datos* d, int dim) {
+	int i;
+	float resultado = 0;
+	float media;
+	for(i=0; i<dim; i++) {
+		resultado += d[i].pH;
+	}
+    media = (resultado/dim);
+	return media;
+}
+
+/*float moda (struct datos* d, int dim) {
+	int i, j;
+	float frecuencia = 0, frecuencia_maxima=0;
+	float moda;
+	for (i = 0; i < dim; i++) {
+        for (j = 0; j < dim; j++) {
+            if (d[j].pH== d[i].pH) {
+            	frecuencia_maxima = d[j].pH;
+                frecuencia++;
+            }
+        }
+        if (frecuencia > frecuencia_maxima) {
+            frecuencia_maxima = frecuencia;
+            moda =  d[i].pH;
+        }
+    }
+    return moda;  
+}*/
+
+float mediana (struct datos* d, int dim) {
+	int i,j, nuevo;
+	float mediana =0;
+	float vec[25];
+	 for(i=0;i<dim;i++){
+        for(j=0;j<dim-i;j++){
+            if(d[j].pH=d[j+1].pH){
+                nuevo=vec[j];
+                vec[j]=vec[j+1];
+                vec[j+1]=nuevo ;
+            }
+        }
+    }
+    if (dim % 2 == 0){
+    	mediana = (d[(dim/2)-1].pH + d[(dim/2)].pH)/2;
+	} else {
+		mediana = d[(dim/2)].pH;
+	}
+    return mediana;
+}
+
+float varianza (struct datos* d, int dim) {
+	int i; 
+	float resultado = 0;
+	for (i=0; i<dim; i++) {
+		resultado += (d[i].pH-media(d, dim))*(d[i].pH-media(d, dim));
+	}
+	return (resultado/dim);
+}
+
+float maximo(struct datos* d, int dim) {
+	float maximo = d[0].pH;
+    int i;
+    for (i = 1; i < dim; i++) {
+        if (d[i].pH> maximo) {
+            maximo = d[i].pH;
+        }
+    }
+    return maximo;
+}
+
+float minimo(struct datos* d, int dim) {
+	float minimo = d[0].pH;
+    int i;
+    for (i = 1; i < dim; i++) {
+        if (d[i].pH < minimo) {
+            minimo = d[i].pH;
+        }
+    }
+    return minimo;
+}
 	
 	
 
