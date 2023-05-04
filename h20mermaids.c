@@ -242,9 +242,10 @@ int main(){
 		    fscanf(fentrada, "%s, ", nada);	
 		}
         //Convertir datos a struct
-		for (i=0; i<25; i++){
-			fscanf(fentrada, "%s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
-    		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal); 
+		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
+		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal) != EOF ) {
+		     //printf("Calculando...\n");
+		     i++;
 		}
     	fclose(fentrada);
        	(fsalida);
@@ -265,7 +266,7 @@ int main(){
 		           // printf("Resultado de la moda: %.2f\n", moda(d, 25));
     				break;
     			case 3:
-    					
+    				printf("Resultado de la media: %.2f\n", media(d, 25));	
     				break;
     			case 4:
 	            	printf("Resultado de la varianza: %.2f\n", varianza(d, 25));
