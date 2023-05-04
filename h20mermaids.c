@@ -25,12 +25,12 @@ typedef struct datos {
  	float tanto_en_sal;
  }datos;
 
-float media (struct datos* d, int);
-//float moda (struct datos* d, int);
-float mediana (struct datos* d, int);
-float varianza (struct datos* d, int);
-float maximo (struct datos* d, int);
-float minimo (struct datos* d, int); 
+float media (struct datos* d, int, int);
+//float moda (struct datos* d, int, int);
+float mediana (struct datos* d, int, int);
+float varianza (struct datos* d, int, int);
+float maximo (struct datos* d, int, int);
+float minimo (struct datos* d, int, int); 
 	 
 int main(){
 	
@@ -237,16 +237,25 @@ int main(){
 			printf("Este barrio no esta registrado.\n");
 			}
 		}while(fentrada==NULL);
+		
+		datos d[25]; 
+     	char nada[100];
+    	int z;
+    	int dim=0;
+		i=0;
+		
      	//Quitar los titulos del fichero
      	for(z=0; z<8; z++){
 		    fscanf(fentrada, "%s, ", nada);	
 		}
+		
         //Convertir datos a struct
 		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
 		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal) != EOF ) {
 		     //printf("Calculando...\n");
 		     i++;
 		}
+		dim = i;
     	fclose(fentrada);
        	(fsalida);
      	
@@ -258,24 +267,147 @@ int main(){
     		printf("5.Valor maximo\n");
     		printf("6.Valor minimo\n");
     		scanf("%d",&opcion5);
+    		
+    		int opcion6;
+    		
     		switch(opcion5) {
     			case 1:
-    				printf("Resultado de la media: %.2f\n", media(d, 25));
+    				printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de la media: %.2f\n", media(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de la media del pH: %.2f\n", media(d, dim, 1));
+						printf("Resultado de la media de la conductividad: %.2f\n", media(d, dim, 2));
+						printf("Resultado de la media de la turbidez: %.2f\n", media(d, dim, 3));
+						printf("Resultado de la media de coliformes: %.2f\n", media(d, dim, 4));
+						printf("Resultado de la media de la temperatura: %.2f\n", media(d, dim, 5));
+						printf("Resultado de la media de las precipitaciones: %.2f\n", media(d, dim, 6));
+						printf("Resultado de la media del porcentaje de sal: %.2f\n", media(d, dim, 7));
+					}
     				break;
-    			case 2:				
-		           // printf("Resultado de la moda: %.2f\n", moda(d, 25));
+    			case 2:/*
+					printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de la moda: %.2f\n", media(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de la moda del pH: %.2f\n", moda(d, dim, 1));
+						printf("Resultado de la moda de la conductividad: %.2f\n", moda(d, dim, 2));
+						printf("Resultado de la moda de la turbidez: %.2f\n", moda(d, dim, 3));
+						printf("Resultado de la moda de coliformes: %.2f\n", moda(d, dim, 4));
+						printf("Resultado de la moda de la temperatura: %.2f\n", moda(d, dim, 5));
+						printf("Resultado de la moda de las precipitaciones: %.2f\n", moda(d, dim, 6));
+						printf("Resultado de la moda del porcentaje de sal: %.2f\n", moda(d, dim, 7));
+					}	*/		
     				break;
     			case 3:
-    				printf("Resultado de la media: %.2f\n", media(d, 25));	
+    				printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de la mediana: %.2f\n", mediana(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de la mediana del pH: %.2f\n", mediana(d, dim, 1));
+						printf("Resultado de la mediana de la conductividad: %.2f\n", mediana(d, dim, 2));
+						printf("Resultado de la mediana de la turbidez: %.2f\n", mediana(d, dim, 3));
+						printf("Resultado de la mediana de coliformes: %.2f\n", mediana(d, dim, 4));
+						printf("Resultado de la mediana de la temperatura: %.2f\n", mediana(d, dim, 5));
+						printf("Resultado de la mediana de las precipitaciones: %.2f\n", mediana(d, dim, 6));
+						printf("Resultado de la mediana del porcentaje de sal: %.2f\n", mediana(d, dim, 7));
+					}
     				break;
     			case 4:
-	            	printf("Resultado de la varianza: %.2f\n", varianza(d, 25));
+    				printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de la varianza: %.2f\n", varianza(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de la varianza del pH: %.2f\n", varianza(d, dim, 1));
+						printf("Resultado de la varianza de la conductividad: %.2f\n", varianza(d, dim, 2));
+						printf("Resultado de la varianza de la turbidez: %.2f\n", varianza(d, dim, 3));
+						printf("Resultado de la varianza de coliformes: %.2f\n", varianza(d, dim, 4));
+						printf("Resultado de la varianza de la temperatura: %.2f\n", varianza(d, dim, 5));
+						printf("Resultado de la varianza de las precipitaciones: %.2f\n", varianza(d, dim, 6));
+						printf("Resultado de la varianza del porcentaje de sal: %.2f\n", varianza(d, dim, 7));
+					}
     				break;
     			case 5:
-            		printf("Resultado de la maximo: %.2f\n", maximo(d, 25));	
+    				printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de el maximo: %.2f\n", maximo(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de el maximo del pH: %.2f\n", maximo(d, dim, 1));
+						printf("Resultado de el maximo de la conductividad: %.2f\n", maximo(d, dim, 2));
+						printf("Resultado de el maximo de la turbidez: %.2f\n", maximo(d, dim, 3));
+						printf("Resultado de el maximo de coliformes: %.2f\n", maximo(d, dim, 4));
+						printf("Resultado de el maximo de la temperatura: %.2f\n", maximo(d, dim, 5));
+						printf("Resultado de el maximo de las precipitaciones: %.2f\n", maximo(d, dim, 6));
+						printf("Resultado de el maximo del porcentaje de sal: %.2f\n", maximo(d, dim, 7));
+					}	
     				break;
     			case 6:	
-            		printf("Resultado de la minimo: %.2f\n", minimo(d, 25));
+    			    printf("Elija que caracteristica quiere analizar:\n");
+    	        	printf("1.pH\n");
+            		printf("2.Conductividad\n");
+            		printf("3.Turbidez\n");
+            		printf("4.Coliformes\n");
+            		printf("5.Temperatura\n");
+            		printf("6. Precipitanciones \n");
+            		printf("7. Porcentaje de sal \n");
+            		printf("8. Todos \n");
+    	        	scanf("%d", &opcion6);
+    	        	if (opcion6 < 8 && opcion6 > 0) {
+    	        		printf("Resultado de el minimo: %.2f\n", minimo(d, dim, opcion6));
+					} else if (opcion6 == 8) {
+						printf("Resultado de el minimo del pH: %.2f\n", minimo(d, dim, 1));
+						printf("Resultado de el minimo de la conductividad: %.2f\n", minimo(d, dim, 2));
+						printf("Resultado de el minimo de la turbidez: %.2f\n", minimo(d, dim, 3));
+						printf("Resultado de el minimo de coliformes: %.2f\n", minimo(d, dim, 4));
+						printf("Resultado de el minimo de la temperatura: %.2f\n", minimo(d, dim, 5));
+						printf("Resultado de el minimo de las precipitaciones: %.2f\n", minimo(d, dim, 6));
+						printf("Resultado de el minimo del porcentaje de sal: %.2f\n", minimo(d, dim, 7));
+					}
     				break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
@@ -607,87 +739,299 @@ void a_datosnew(){
 		
 		
 
-float media(struct datos* d, int dim) {
+float media(struct datos* d, int dim, int t) {
 	int i;
 	float resultado = 0;
 	float media;
 	for(i=0; i<dim; i++) {
-		resultado += d[i].pH;
+		switch (t) {
+			case 1:
+				resultado += d[i].pH;
+				break;
+			case 2:
+				resultado += d[i].conductividad;
+				break;
+			case 3:
+				resultado += d[i].turbidez;
+				break;
+			case 4:
+				resultado += d[i].coliformes;
+				break;
+			case 5:
+				resultado += d[i].temperatura;
+				break;
+			case 6:
+				resultado += d[i].precipitaciones;
+				break;
+			case 7:
+				resultado += d[i].tanto_en_sal;
+				break;
+		}	
 	}
     media = (resultado/dim);
 	return media;
 }
 
-/*float moda (struct datos* d, int dim) {
-	int i, j;
-	float frecuencia = 0, frecuencia_maxima=0;
+/*
+float moda (struct datos* d, int dim) {
+	int frecuencia=0;
+	int i=0, cont=1;
 	float moda;
-	for (i = 0; i < dim; i++) {
-        for (j = 0; j < dim; j++) {
-            if (d[j].pH== d[i].pH) {
-            	frecuencia_maxima = d[j].pH;
-                frecuencia++;
-            }
-        }
-        if (frecuencia > frecuencia_maxima) {
-            frecuencia_maxima = frecuencia;
-            moda =  d[i].pH;
-        }
-    }
-    return moda;  
+	while(i<dim) {
+		if(d[i].pH==d[i+1].pH)
+		{
+			cont++;
+			i++;
+		}else{
+			if(cont>(frecuencia))
+			{
+				moda=d[i].pH;
+				*frecuencia=cont;
+				cont=1;
+				i++;
+			}else {
+				cont=1;
+				i++;
+			}
+		}
+	}
+	return(moda); 
 }*/
 
-float mediana (struct datos* d, int dim) {
-	int i,j, nuevo;
-	float mediana =0;
-	float vec[25];
-	 for(i=0;i<dim;i++){
-        for(j=0;j<dim-i;j++){
-            if(d[j].pH=d[j+1].pH){
-                nuevo=vec[j];
-                vec[j]=vec[j+1];
-                vec[j+1]=nuevo ;
-            }
-        }
+float mediana (struct datos* d, int dim, int t) {
+	int i, j;
+	float aux = 0, mediana =0;
+	int a, b;
+	a = (dim/2)-1/2;
+    b = (dim/2)+1/2;
+	for(i = 0; i < dim; i++){
+    for(j = 0; j < dim; j++){
+    	switch (t) {
+			case 1:
+				if(d[j].pH > d[j + 1].pH){
+                    aux = d[j].pH;
+                    d[j].pH = d[j + 1].pH;
+                    d[j + 1].pH = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].pH)+(d[b].pH))/2;
+            	} else {
+	 	            mediana = d[dim/2].pH;
+	            }
+				break;
+			case 2:
+				if(d[j].conductividad> d[j + 1].conductividad){
+                    aux = d[j].conductividad;
+                    d[j].conductividad = d[j + 1].conductividad;
+                    d[j + 1].conductividad = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].conductividad)+(d[b].conductividad))/2;
+            	} else {
+	 	            mediana = d[dim/2].conductividad;
+	            }
+				break;
+			case 3:
+				if(d[j].turbidez > d[j + 1].turbidez){
+                     aux = d[j].turbidez;
+                     d[j].turbidez = d[j + 1].turbidez;
+                     d[j + 1].turbidez = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].turbidez)+(d[b].turbidez))/2;
+            	} else {
+	 	            mediana = d[dim/2].turbidez;
+	            }
+				break;
+			case 4:
+				if(d[j].coliformes > d[j + 1].coliformes){
+                     aux = d[j].coliformes;
+                     d[j].coliformes = d[j + 1].coliformes;
+                     d[j + 1].coliformes = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].coliformes)+(d[b].coliformes))/2;
+            	} else {
+	 	            mediana = d[dim/2].coliformes;
+	            }
+				break;
+			case 5:
+  				if(d[j].temperatura > d[j + 1].temperatura){
+                     aux = d[j].temperatura;
+                     d[j].temperatura = d[j + 1].temperatura;
+                     d[j + 1].temperatura = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].temperatura)+(d[b].temperatura))/2;
+            	} else {
+	 	            mediana = d[dim/2].temperatura;
+	            }
+				break;
+			case 6:
+				if(d[j].precipitaciones > d[j + 1].precipitaciones){
+                     aux = d[j].precipitaciones;
+                     d[j].precipitaciones = d[j + 1].precipitaciones;
+                     d[j + 1].precipitaciones = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].precipitaciones)+(d[b].precipitaciones))/2;
+            	} else {
+	 	            mediana = d[dim/2].precipitaciones;
+	            }
+				break;
+			case 7:
+	 			if(d[j].tanto_en_sal > d[j + 1].tanto_en_sal){
+                     aux = d[j].tanto_en_sal;
+                     d[j].tanto_en_sal = d[j + 1].tanto_en_sal;
+                     d[j + 1].tanto_en_sal = aux;
+                }
+                if (dim % 2 == 0) {
+                	mediana = ((d[a].tanto_en_sal)+(d[b].tanto_en_sal))/2;
+            	} else {
+	 	            mediana = d[dim/2].tanto_en_sal;
+	            }
+				break;
+		}		
     }
-    if (dim % 2 == 0){
-    	mediana = (d[(dim/2)-1].pH + d[(dim/2)].pH)/2;
-	} else {
-		mediana = d[(dim/2)].pH;
-	}
-    return mediana;
+    }
+return mediana;
 }
 
-float varianza (struct datos* d, int dim) {
+float varianza (struct datos* d, int dim, int t) {
 	int i; 
 	float resultado = 0;
 	for (i=0; i<dim; i++) {
-		resultado += (d[i].pH-media(d, dim))*(d[i].pH-media(d, dim));
+		switch (t) {
+			case 1:
+				resultado += (d[i].pH-media(d, dim,1))*(d[i].pH-media(d, dim,1));
+				break;
+			case 2:
+				resultado += (d[i].conductividad-media(d, dim, 2))*(d[i].conductividad-media(d, dim, 2));
+				break;
+			case 3:
+				resultado += (d[i].turbidez-media(d, dim, 3))*(d[i].turbidez-media(d, dim, 3));
+				break;
+			case 4:
+				resultado += (d[i].coliformes-media(d, dim, 4))*(d[i].coliformes-media(d, dim, 4));
+				break;
+			case 5:
+				resultado += (d[i].temperatura-media(d, dim,5))*(d[i].temperatura-media(d, dim, 5));
+				break;
+			case 6:
+				resultado += (d[i].precipitaciones-media(d, dim, 6))*(d[i].precipitaciones-media(d, dim, 6));
+				break;
+			case 7:
+				resultado += (d[i].tanto_en_sal-media(d, dim, 7))*(d[i].tanto_en_sal-media(d, dim, 7));
+				break;
+		}
 	}
 	return (resultado/dim);
 }
 
-float maximo(struct datos* d, int dim) {
-	float maximo = d[0].pH;
+float maximo(struct datos* d, int dim, int t) {
     int i;
+    float maximo = 0;
     for (i = 1; i < dim; i++) {
-        if (d[i].pH> maximo) {
-            maximo = d[i].pH;
-        }
+    	switch (t) {
+			case 1:
+				maximo = d[0].pH;
+                if (d[i].pH> maximo) {
+                    maximo = d[i].pH;
+                }
+				break;
+			case 2:
+				maximo = d[0].conductividad;
+                if (d[i].pH> maximo) {
+                    maximo = d[i].conductividad;
+                }
+				break;
+			case 3:
+				maximo = d[0].turbidez;
+                if (d[i].turbidez> maximo) {
+                    maximo = d[i].turbidez;
+                }
+				break;
+			case 4:
+				maximo = d[0].coliformes;
+                if (d[i].coliformes> maximo) {
+                    maximo = d[i].coliformes;
+                }
+				break;
+			case 5:
+				maximo = d[0].temperatura;
+                if (d[i].temperatura> maximo) {
+                    maximo = d[i].temperatura;
+                }
+				break;
+			case 6:
+				maximo = d[0].precipitaciones;
+                if (d[i].precipitaciones> maximo) {
+                    maximo = d[i].precipitaciones;
+                }
+				break;
+			case 7:
+				maximo = d[0].tanto_en_sal;
+                if (d[i].tanto_en_sal> maximo) {
+                    maximo = d[i].tanto_en_sal;
+                }
+				break;
+		}	
     }
     return maximo;
 }
 
-float minimo(struct datos* d, int dim) {
-	float minimo = d[0].pH;
+float minimo(struct datos* d, int dim, int t) {
     int i;
+    float minimo = 0;
     for (i = 1; i < dim; i++) {
-        if (d[i].pH < minimo) {
-            minimo = d[i].pH;
-        }
+    	switch (t) {
+			case 1:
+				minimo = d[0].pH;
+                if (d[i].pH < minimo) {
+                    minimo = d[i].pH;
+                }
+				break;
+			case 2:
+			    minimo = d[0].conductividad;
+                if (d[i].conductividad < minimo) {
+                    minimo = d[i].conductividad;
+                }
+				break;
+			case 3:
+				minimo = d[0].turbidez;
+                if (d[i].turbidez < minimo) {
+                    minimo = d[i].turbidez;
+                }
+				break;
+			case 4:
+				minimo = d[0].coliformes;
+                if (d[i].coliformes < minimo) {
+                    minimo = d[i].coliformes;
+                }
+				break;
+			case 5:
+				minimo = d[0].temperatura;
+                if (d[i].temperatura < minimo) {
+                    minimo = d[i].temperatura;
+                }
+				break;
+			case 6:
+				minimo = d[0].precipitaciones;
+                if (d[i].precipitaciones < minimo) {
+                    minimo = d[i].precipitaciones;
+                }
+				break;
+			case 7:
+				minimo = d[0].tanto_en_sal;
+                if (d[i].tanto_en_sal < minimo) {
+                    minimo = d[i].tanto_en_sal;
+                }
+				break;
+		}
     }
     return minimo;
 }
+
 	
 	
 
