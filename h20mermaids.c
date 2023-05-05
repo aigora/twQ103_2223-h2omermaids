@@ -931,104 +931,160 @@ float varianza (struct datos* d, int dim, int t) {
 float maximo(struct datos* d, int dim, int t) {
     int i;
     float maximo = 0;
-    for (i = 1; i < dim; i++) {
-    	switch (t) {
-			case 1:
-				maximo = d[0].pH;
-                if (d[i].pH> maximo) {
-                    maximo = d[i].pH;
-                }
-				break;
-			case 2:
-				maximo = d[0].conductividad;
-                if (d[i].pH> maximo) {
-                    maximo = d[i].conductividad;
-                }
-				break;
-			case 3:
-				maximo = d[0].turbidez;
-                if (d[i].turbidez> maximo) {
-                    maximo = d[i].turbidez;
-                }
-				break;
-			case 4:
-				maximo = d[0].coliformes;
-                if (d[i].coliformes> maximo) {
-                    maximo = d[i].coliformes;
-                }
-				break;
-			case 5:
-				maximo = d[0].temperatura;
-                if (d[i].temperatura> maximo) {
-                    maximo = d[i].temperatura;
-                }
-				break;
-			case 6:
-				maximo = d[0].precipitaciones;
-                if (d[i].precipitaciones> maximo) {
-                    maximo = d[i].precipitaciones;
-                }
-				break;
-			case 7:
-				maximo = d[0].tanto_en_sal;
-                if (d[i].tanto_en_sal> maximo) {
-                    maximo = d[i].tanto_en_sal;
-                }
-				break;
-		}	
-    }
+    int posMax = 0;
+    
+    switch (t) {
+		case 1:
+			maximo = d[0].pH;
+            for (i=1; i<dim; i++) {
+                 if (d[i].pH > maximo) {
+                     maximo = d[i].pH;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].pH;	
+			break;
+		case 2:
+			maximo = d[0].conductividad;
+            for (i=1; i<dim; i++) {
+                 if (d[i].conductividad > maximo) {
+                     maximo = d[i].conductividad;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].conductividad;	
+			break;
+		case 3:
+			maximo = d[0].turbidez;
+            for (i=1; i<dim; i++) {
+                 if (d[i].turbidez > maximo) {
+                     maximo = d[i].turbidez;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].turbidez;	
+			break;
+		case 4:
+			maximo = d[0].coliformes;
+            for (i=1; i<dim; i++) {
+                 if (d[i].coliformes > maximo) {
+                     maximo = d[i].coliformes;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].coliformes;
+			break;
+		case 5:
+			maximo = d[0].temperatura;
+            for (i=1; i<dim; i++) {
+                 if (d[i].temperatura > maximo) {
+                     maximo = d[i].temperatura;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].temperatura;	
+			break;
+		case 6:
+			maximo = d[0].precipitaciones;
+            for (i=1; i<dim; i++) {
+                 if (d[i].precipitaciones > maximo) {
+                     maximo = d[i].precipitaciones;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].precipitaciones;	
+			break;
+		case 7:
+			maximo = d[0].tanto_en_sal;
+            for (i=1; i<dim; i++) {
+                 if (d[i].tanto_en_sal > maximo) {
+                     maximo = d[i].tanto_en_sal;
+                     posMax = i;
+                 }
+             } 
+            maximo = d[posMax].tanto_en_sal;	
+			break;
+	}	
     return maximo;
 }
 
 float minimo(struct datos* d, int dim, int t) {
     int i;
     float minimo = 0;
-    for (i = 1; i < dim; i++) {
-    	switch (t) {
-			case 1:
-				minimo = d[0].pH;
+    int posMin = 0;
+    
+    switch (t) {
+		case 1:
+			minimo = d[0].pH;
+            for (i=1; i<dim; i++) {
                 if (d[i].pH < minimo) {
                     minimo = d[i].pH;
+                    posMin = i;
                 }
-				break;
-			case 2:
-			    minimo = d[0].conductividad;
+            } 
+            minimo = d[posMin].pH;
+            break;
+		case 2:
+			minimo = d[0].conductividad;
+            for (i=1; i<dim; i++) {
                 if (d[i].conductividad < minimo) {
                     minimo = d[i].conductividad;
+                    posMin = i;
                 }
-				break;
-			case 3:
-				minimo = d[0].turbidez;
+            } 
+            minimo = d[posMin].conductividad;	
+			break;
+		case 3:
+			minimo = d[0].turbidez;
+            for (i=1; i<dim; i++) {
                 if (d[i].turbidez < minimo) {
                     minimo = d[i].turbidez;
+                    posMin = i;
                 }
-				break;
-			case 4:
-				minimo = d[0].coliformes;
+            } 
+            minimo = d[posMin].turbidez;	
+			break;
+		case 4:
+			minimo = d[0].coliformes;
+            for (i=1; i<dim; i++) {
                 if (d[i].coliformes < minimo) {
                     minimo = d[i].coliformes;
+                    posMin = i;
                 }
-				break;
-			case 5:
-				minimo = d[0].temperatura;
+            } 
+            minimo = d[posMin].coliformes;
+			break;
+		case 5:
+			minimo = d[0].temperatura;
+            for (i=1; i<dim; i++) {
                 if (d[i].temperatura < minimo) {
                     minimo = d[i].temperatura;
+                    posMin = i;
                 }
-				break;
-			case 6:
-				minimo = d[0].precipitaciones;
+            } 
+            minimo = d[posMin].temperatura;	
+			break;
+		case 6:
+			minimo = d[0].precipitaciones;
+            for (i=1; i<dim; i++) {
                 if (d[i].precipitaciones < minimo) {
                     minimo = d[i].precipitaciones;
+                    posMin = i;
                 }
-				break;
-			case 7:
-				minimo = d[0].tanto_en_sal;
+            } 
+            minimo = d[posMin].precipitaciones;
+            break;
+		case 7:
+			minimo = d[0].tanto_en_sal;
+            for (i=1; i<dim; i++) {
                 if (d[i].tanto_en_sal < minimo) {
                     minimo = d[i].tanto_en_sal;
+                    posMin = i;
                 }
-				break;
-		}
-    }
+            } 
+            minimo = d[posMin].tanto_en_sal;	
+			break;
+	}
     return minimo;
 }
 

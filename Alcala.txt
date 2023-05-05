@@ -1,4 +1,4 @@
-Parametros	pH	Conductividad  Turbidez  Coliformes  Temperatura  Precipitaciones  tanto_en__sal  Potabilidad
+Parametros	pH	Conductividad  Turbidez  Coliformes  Temperatura  Precipitaciones  tanto_en__sal
 Fuente_1	8.00	127		2	1	15    375     45.18     88.5
 Fuente_2	6.89    178		1	2 	9     402     34.25     97.3     
 Fuente_3	7.95	289		0	1 	5     298     36.02     94.2     
