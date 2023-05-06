@@ -1,7 +1,7 @@
 Parametros	pH	 Conductividad Turbidez	  Coliformes Temperatura Precipitaciones Porcentaje sal
 Fuente_1	6.04		280		0 		0	  17    		365  		   36.69
 Fuente_2	7.20		158		0		1	  9     		454  	 	   42.50
-Fuente_3	6.95		169		6		0 	  8 		      365  		   46.42 
+Fuente_3	6.95		169		6		0 	  8 		        365  		   46.42 
 Fuente_4	7.75		219		0		1	  22			422  		   36.85
 Fuente_5	7.04		254		2		0 	  20			305  		   44.91
 Fuente_6	6.22		163		0		0 	  19			320  		   43.64
