@@ -120,8 +120,7 @@ int main(){
 					printf("Este barrio no esta registrado.\n");
 				}
 			}while(fentrada==NULL);
-        	
-			int columna;
+     	
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
 			printf("2. El pH\n");
@@ -144,18 +143,14 @@ int main(){
 				system("pause");
 				break;
     		    case 2:
-    		    	fentrada=fopen(nombre_fichero, "r");
-    		    columna==2;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    	/*for(j=0;j<=di;j++){
+    		    		printf("%s\t",x[j].fuentes);
+						printf("%f\n",&x[j].pH);
+						};*/
+    		    
    			     break;
 				case 3:
-    		    columna==3;	
+    		    	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -165,7 +160,7 @@ int main(){
 		     	system("pause");
    			     break;
          	   case 4:
-    		    columna==4;	
+    		   
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -175,7 +170,7 @@ int main(){
 		     	system("pause");
    			     break;
             	case 5:
-    		    columna==5;	
+    		  	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -185,7 +180,7 @@ int main(){
 		     	system("pause");
    			     break;
 				case 6:
-    		    columna==6;	
+    		    
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -195,7 +190,7 @@ int main(){
 		     	system("pause");
    			     break;
 				case 7:
-    		    columna==7;	
+    		  
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -205,7 +200,6 @@ int main(){
 		     	system("pause");
    			     break;
 			    case 8:
-    		    columna==8;	
   			     while (aux!=EOF) {
   			     	aux=fgetc(fentrada);
   			     	printf("%c",aux);
@@ -214,18 +208,18 @@ int main(){
 		     	fclose(fentrada);
 		     	system("pause");
    			     break;
-			  /* case 9:
+			   case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
-			   if(media(pH)<6.5||media(pH)>9.5){
-			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable");
+			   if(media(d,25,1)<6.5|| media(d, 25, 1)>9.5){
+			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable, ya que la media es %d",media(d, 25, 1));
 				}
 				else{
-				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable");
+				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable, ya que la media es %d",media(d, 25, 1));
 				}
 			    break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
-    	     	 break;*/
+    	     	 break;
 	           	}
 	           	break;
      case 3:
@@ -1088,7 +1082,6 @@ float minimo(struct datos* d, int dim, int t) {
     return minimo;
 }
 
-	
 	
 
 
