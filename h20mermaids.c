@@ -17,9 +17,9 @@
 typedef struct datos {
  	char fuentes [100];
  	float pH;
- 	int conductividad;
- 	int turbidez;
- 	int coliformes;
+ 	float conductividad;
+ 	float turbidez;
+    float coliformes;
  	float temperatura;
  	float precipitaciones;
  	float tanto_en_sal;
@@ -127,15 +127,11 @@ int main(){
     		int dimen=0;
 			i=0;
 		
-     		//Quitar los titulos del fichero
      		for(r=0; r<8; r++){
-		    fscanf(fentrada, "%s, ", na);	
+		    fscanf(fentrada, "%s, \t", na);	
 		}
-		
-        //Convertir datos a struct
 		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", x[i].fuentes, &x[i].pH, &x[i].conductividad, &x[i].turbidez, 
 		&x[i].coliformes, &x[i].temperatura, &x[i].precipitaciones, &x[i].tanto_en_sal) != EOF ) {
-		     //printf("Calculando...\n");
 		     i++;
 		}
 		dimen = i;
@@ -166,67 +162,38 @@ int main(){
 				break;
     		    case 2:
     		   for(i=0;i<dimen;i++){
-    		   	printf(" %s\t %.2f\n",d[i].fuentes,d[i].pH);
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].pH);
 			   }
    			     break;
 				case 3:
-    		    	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].conductividad);
+			   }
    			     break;
          	   case 4:
-    		   
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
-   			     break;
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].turbidez);
+			   }
+			   break;
             	case 5:
-    		  	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].coliformes);
+			   }
    			     break;
 				case 6:
-    		    
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].temperatura);
+			   }
    			     break;
 				case 7:
-    		  
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		   for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].precipitaciones);
+			   }
    			     break;
 			    case 8:
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+  			     for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].tanto_en_sal);
+			   }
    			     break;
 			   case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
