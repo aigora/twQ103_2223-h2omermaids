@@ -17,16 +17,16 @@
 typedef struct datos {
  	char fuentes [100];
  	float pH;
- 	int conductividad;
- 	int turbidez;
- 	int coliformes;
+ 	float conductividad;
+ 	float turbidez;
+    float coliformes;
  	float temperatura;
  	float precipitaciones;
  	float tanto_en_sal;
  }datos;
 
 float media (struct datos* d, int, int);
-//float moda (struct datos* d, int, int);
+float moda (struct datos* d, int, int);
 float mediana (struct datos* d, int, int);
 float varianza (struct datos* d, int, int);
 float maximo (struct datos* d, int, int);
@@ -120,8 +120,25 @@ int main(){
 					printf("Este barrio no esta registrado.\n");
 				}
 			}while(fentrada==NULL);
-        	
-			int columna;
+     	
+     		datos x[25]; 
+     		char na[100];
+    		int r;
+    		int dimen=0;
+			i=0;
+		
+     		for(r=0; r<8; r++){
+		    fscanf(fentrada, "%s, \t", na);	
+		}
+		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", x[i].fuentes, &x[i].pH, &x[i].conductividad, &x[i].turbidez, 
+		&x[i].coliformes, &x[i].temperatura, &x[i].precipitaciones, &x[i].tanto_en_sal) != EOF ) {
+		     i++;
+		}
+		dimen = i;
+    	fclose(fentrada);
+       	(fsalida);
+       	int i;
+       	
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
 			printf("2. El pH\n");
@@ -144,88 +161,52 @@ int main(){
 				system("pause");
 				break;
     		    case 2:
-    		    	fentrada=fopen(nombre_fichero, "r");
-    		    columna==2;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		   for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].pH);
+			   }
    			     break;
 				case 3:
-    		    columna==3;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].conductividad);
+			   }
    			     break;
          	   case 4:
-    		    columna==4;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
-   			     break;
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].turbidez);
+			   }
+			   break;
             	case 5:
-    		    columna==5;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].coliformes);
+			   }
    			     break;
 				case 6:
-    		    columna==6;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		    for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].temperatura);
+			   }
    			     break;
 				case 7:
-    		    columna==7;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+    		   for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].precipitaciones);
+			   }
    			     break;
 			    case 8:
-    		    columna==8;	
-  			     while (aux!=EOF) {
-  			     	aux=fgetc(fentrada);
-  			     	printf("%c",aux);
-				   }
- 			    printf("\n");
-		     	fclose(fentrada);
-		     	system("pause");
+  			     for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].tanto_en_sal);
+			   }
    			     break;
-			  /* case 9:
+			   case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
-			   if(media(pH)<6.5||media(pH)>9.5){
-			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable");
+			   if(media(x,dimen,1)<6.5|| media(x,dimen, 1)>9.5){
+			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable, ya que la media es %f", media(x, dimen, 1));
 				}
 				else{
-				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable");
+				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable, ya que la media es %f", media(x,dimen, 1));
 				}
 			    break;
 				default:
     		     printf("Opcion invalida. Intente de nuevo.\n");
-    	     	 break;*/
+    	     	 break;
 	           	}
 	           	break;
      case 3:
@@ -294,7 +275,7 @@ int main(){
 						printf("Resultado de la media del porcentaje de sal: %.2f\n", media(d, dim, 7));
 					}
     				break;
-    			case 2:/*
+    			case 2:
 					printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -315,7 +296,7 @@ int main(){
 						printf("Resultado de la moda de la temperatura: %.2f\n", moda(d, dim, 5));
 						printf("Resultado de la moda de las precipitaciones: %.2f\n", moda(d, dim, 6));
 						printf("Resultado de la moda del porcentaje de sal: %.2f\n", moda(d, dim, 7));
-					}	*/		
+					}	
     				break;
     			case 3:
     				printf("Elija que caracteristica quiere analizar:\n");
@@ -772,31 +753,114 @@ float media(struct datos* d, int dim, int t) {
 	return media;
 }
 
-/*
-float moda (struct datos* d, int dim) {
-	int frecuencia=0;
-	int i=0, cont=1;
-	float moda;
-	while(i<dim) {
-		if(d[i].pH==d[i+1].pH)
-		{
-			cont++;
-			i++;
-		}else{
-			if(cont>(frecuencia))
-			{
-				moda=d[i].pH;
-				*frecuencia=cont;
-				cont=1;
-				i++;
-			}else {
-				cont=1;
-				i++;
-			}
-		}
-	}
-	return(moda); 
-}*/
+float moda(struct datos* d, int dim, int t){
+	int i, j;
+	float max_valor = 0;
+	int max_contador = 0;
+	int contador;
+	
+	switch (t) {
+			case 1:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].pH == d[i].pH) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].pH;
+	            	}
+	             }
+				break;
+			case 2:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].conductividad == d[i].conductividad) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].conductividad;
+	            	}
+	             }
+				break;
+			case 3:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].turbidez == d[i].turbidez) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].turbidez;
+	            	}
+	             }
+				break;
+			case 4:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].coliformes == d[i].coliformes) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].coliformes;
+	            	}
+	             }
+				break;
+			case 5:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].temperatura == d[i].temperatura) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].temperatura;
+	            	}
+	             }
+				break;
+			case 6:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].precipitaciones == d[i].precipitaciones) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].precipitaciones;
+	            	}
+	             }
+				break;
+			case 7:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].tanto_en_sal == d[i].tanto_en_sal) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].tanto_en_sal;
+	            	}
+	             }
+				break;
+		}	
+	return max_valor;
+}
 
 float mediana (struct datos* d, int dim, int t) {
 	int i, j;
@@ -1087,10 +1151,3 @@ float minimo(struct datos* d, int dim, int t) {
 	}
     return minimo;
 }
-
-	
-	
-
-
-
-
