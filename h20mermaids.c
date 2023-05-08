@@ -89,8 +89,7 @@ int main(){
     printf("1. Agregar datos\n");
     printf("2. Consultar datos\n");
     printf("3. Analizar datos\n");
-    printf("4. Comparacion de datos\n");
-    printf("5. Salir\n");
+    printf("4. Salir\n");
     scanf("%d", &opcion2);
     
     int opcion3;
@@ -396,9 +395,6 @@ int main(){
 	           	}	
 		  	break;	
     	case 4:
-			printf("A continuacion podras elegir entre que barrios comparar");
-			break;
-    	case 5:
     		printf("Hasta pronto\n");
     		break;
     	default:
