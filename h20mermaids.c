@@ -26,7 +26,7 @@ typedef struct datos {
  }datos;
 
 float media (struct datos* d, int, int);
-//float moda (struct datos* d, int, int);
+float moda (struct datos* d, int, int);
 float mediana (struct datos* d, int, int);
 float varianza (struct datos* d, int, int);
 float maximo (struct datos* d, int, int);
@@ -275,7 +275,7 @@ int main(){
 						printf("Resultado de la media del porcentaje de sal: %.2f\n", media(d, dim, 7));
 					}
     				break;
-    			case 2:/*
+    			case 2:
 					printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -296,7 +296,7 @@ int main(){
 						printf("Resultado de la moda de la temperatura: %.2f\n", moda(d, dim, 5));
 						printf("Resultado de la moda de las precipitaciones: %.2f\n", moda(d, dim, 6));
 						printf("Resultado de la moda del porcentaje de sal: %.2f\n", moda(d, dim, 7));
-					}	*/		
+					}	
     				break;
     			case 3:
     				printf("Elija que caracteristica quiere analizar:\n");
@@ -753,31 +753,114 @@ float media(struct datos* d, int dim, int t) {
 	return media;
 }
 
-/*
-float moda (struct datos* d, int dim) {
-	int frecuencia=0;
-	int i=0, cont=1;
-	float moda;
-	while(i<dim) {
-		if(d[i].pH==d[i+1].pH)
-		{
-			cont++;
-			i++;
-		}else{
-			if(cont>(frecuencia))
-			{
-				moda=d[i].pH;
-				*frecuencia=cont;
-				cont=1;
-				i++;
-			}else {
-				cont=1;
-				i++;
-			}
-		}
-	}
-	return(moda); 
-}*/
+float moda(struct datos* d, int dim, int t){
+	int i, j;
+	float max_valor = 0;
+	int max_contador = 0;
+	int contador;
+	
+	switch (t) {
+			case 1:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].pH == d[i].pH) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].pH;
+	            	}
+	             }
+				break;
+			case 2:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].conductividad == d[i].conductividad) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].conductividad;
+	            	}
+	             }
+				break;
+			case 3:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].turbidez == d[i].turbidez) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].turbidez;
+	            	}
+	             }
+				break;
+			case 4:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].coliformes == d[i].coliformes) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].coliformes;
+	            	}
+	             }
+				break;
+			case 5:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].temperatura == d[i].temperatura) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].temperatura;
+	            	}
+	             }
+				break;
+			case 6:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].precipitaciones == d[i].precipitaciones) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].precipitaciones;
+	            	}
+	             }
+				break;
+			case 7:
+				for(i = 0; i<dim; i++) {
+	            	contador = 0;
+	            	for (j=0; j<dim; j++) {
+            			if (d[j].tanto_en_sal == d[i].tanto_en_sal) {
+		            		contador ++;
+		            	}
+	             	}
+	            	if (contador > max_contador) {
+		            	max_contador=contador;
+		            	max_valor = d[i].tanto_en_sal;
+	            	}
+	             }
+				break;
+		}	
+	return max_valor;
+}
 
 float mediana (struct datos* d, int dim, int t) {
 	int i, j;
