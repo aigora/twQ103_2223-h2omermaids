@@ -1,5 +1,6 @@
 NOMBRE, APELLIDOS, DNI, CLAVE
 
+<<<<<<< HEAD
 Andrea de la Torre 01945049P0000 0000
 Marina Garcia 51494835 0000
 Marina  Bielsa 51522475 3344
@@ -17,3 +18,7 @@ Maria Garcia 5465399s 1051
 Maria Garcia 15465399 1105
 David Escribano 53993905 1234
 Andres Cohen 54297805 9999
+=======
+Marina Bielsa 51522475 1111
+>>>>>>> b957584d4f9c59104ba93bb664734e3e0e803923
+marina garcia 11 22
