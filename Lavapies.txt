@@ -1,6 +1,6 @@
 Parametros,	pH,	Conductividad, Turbidez, Coliformes, Temperatura, Precipitaciones, tanto_en__sal
-Fuente_1	6   	100 1   0 13    415     44.08
-Fuente_2	7.2	    158	0	0 8     400     44.10    
+Fuente_1	6   	100     1       0 13    415     44.08
+Fuente_2	7.2	158	0	0 8     400     44.10    
 Fuente_3	6.95	269	0	0 8     390     45.02   
 Fuente_4	7.75	239	0	0 10    420     43.80
 Fuente_5	7.04	194	0	0 12    405     44.70
