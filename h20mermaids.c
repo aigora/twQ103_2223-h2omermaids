@@ -121,6 +121,28 @@ int main(){
 				}
 			}while(fentrada==NULL);
      	
+     		datos x[25]; 
+     		char na[100];
+    		int r;
+    		int dimen=0;
+			i=0;
+		
+     		//Quitar los titulos del fichero
+     		for(r=0; r<8; r++){
+		    fscanf(fentrada, "%s, ", na);	
+		}
+		
+        //Convertir datos a struct
+		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", x[i].fuentes, &x[i].pH, &x[i].conductividad, &x[i].turbidez, 
+		&x[i].coliformes, &x[i].temperatura, &x[i].precipitaciones, &x[i].tanto_en_sal) != EOF ) {
+		     //printf("Calculando...\n");
+		     i++;
+		}
+		dimen = i;
+    	fclose(fentrada);
+       	(fsalida);
+       	int i;
+       	
 		    printf("Elija entre estas opciones lo que quiere consultar:\n");
 			printf("1. Todos los datos\n");
 			printf("2. El pH\n");
@@ -143,11 +165,9 @@ int main(){
 				system("pause");
 				break;
     		    case 2:
-    		    	/*for(j=0;j<=di;j++){
-    		    		printf("%s\t",x[j].fuentes);
-						printf("%f\n",&x[j].pH);
-						};*/
-    		    
+    		   for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\n",d[i].fuentes,d[i].pH);
+			   }
    			     break;
 				case 3:
     		    	
