@@ -197,11 +197,11 @@ int main(){
    			     break;
 			   case 9:
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
-			   if(media(d,25,1)<6.5|| media(d, 25, 1)>9.5){
-			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable, ya que la media es %d",media(d, 25, 1));
+			   if(media(x,dimen,1)<6.5|| media(x,dimen, 1)>9.5){
+			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable, ya que la media es %f", media(x, dimen, 1));
 				}
 				else{
-				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable, ya que la media es %d",media(d, 25, 1));
+				 printf("Tras analizar este barrio podemos observar que el agua de este barrio es potable, ya que la media es %f", media(x,dimen, 1));
 				}
 			    break;
 				default:
@@ -1068,9 +1068,3 @@ float minimo(struct datos* d, int dim, int t) {
 	}
     return minimo;
 }
-
-	
-
-
-
-
