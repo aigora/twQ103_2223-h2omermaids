@@ -246,12 +246,13 @@ int main(){
 		}
 		
         //Convertir datos a struct
-		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
+		while(fscanf(fentrada, "%s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
 		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal) != EOF ) {
 		    
 		     i++;
+		     dim ++;
 		}
-		dim = i;
+		//dim = i;
     	fclose(fentrada);
        	(fsalida);
      	
