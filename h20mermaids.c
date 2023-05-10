@@ -287,7 +287,11 @@ int main(){
             		printf("8. Todos \n");
     	        	scanf("%d", &opcion6);
     	        	if (opcion6 < 8 && opcion6 > 0) {
-    	        		printf("Resultado de la moda: %.2f\n", media(d, dim, opcion6));
+    	        		if (moda(d, dim, opcion6) == 0) {
+    	        			printf("No hay moda en este intervalo\n");
+						}else {
+							printf("Resultado de la moda: %.2f\n", moda(d, dim, opcion6));
+						}
 					} else if (opcion6 == 8) {
 						printf("Resultado de la moda del pH: %.2f\n", moda(d, dim, 1));
 						printf("Resultado de la moda de la conductividad: %.2f\n", moda(d, dim, 2));
@@ -967,29 +971,29 @@ float varianza (struct datos* d, int dim, int t) {
 	for (i=0; i<dim; i++) {
 		switch (t) {
 			case 1:
-				resultado += (d[i].pH-media(d, dim,1))*(d[i].pH-media(d, dim,1));
+				resultado += (d[i].pH-(media(d, dim, 1)))*(d[i].pH-(media(d, dim, 1)));
 				break;
 			case 2:
-				resultado += (d[i].conductividad-media(d, dim, 2))*(d[i].conductividad-media(d, dim, 2));
+				resultado += (d[i].conductividad-(media(d, dim, 2)))*(d[i].conductividad-(media(d, dim, 2)));
 				break;
 			case 3:
-				resultado += (d[i].turbidez-media(d, dim, 3))*(d[i].turbidez-media(d, dim, 3));
+				resultado += (d[i].turbidez-(media(d, dim, 3)))*(d[i].turbidez-(media(d, dim, 3)));
 				break;
 			case 4:
-				resultado += (d[i].coliformes-media(d, dim, 4))*(d[i].coliformes-media(d, dim, 4));
+				resultado += (d[i].coliformes-(media(d, dim, 4)))*(d[i].coliformes-(media(d, dim, 4)));
 				break;
 			case 5:
-				resultado += (d[i].temperatura-media(d, dim,5))*(d[i].temperatura-media(d, dim, 5));
+				resultado += (d[i].temperatura-(media(d, dim,5)))*(d[i].temperatura-(media(d, dim, 5)));
 				break;
 			case 6:
-				resultado += (d[i].precipitaciones-media(d, dim, 6))*(d[i].precipitaciones-media(d, dim, 6));
+				resultado += (d[i].precipitaciones-(media(d, dim, 6)))*(d[i].precipitaciones-(media(d, dim, 6)));
 				break;
 			case 7:
-				resultado += (d[i].tanto_en_sal-media(d, dim, 7))*(d[i].tanto_en_sal-media(d, dim, 7));
+				resultado += (d[i].tanto_en_sal-(media(d, dim, 7)))*(d[i].tanto_en_sal-(media(d, dim, 7)));
 				break;
 		}
 	}
-	return (resultado/dim);
+	return (resultado/(float)dim);
 }
 
 float maximo(struct datos* d, int dim, int t) {
