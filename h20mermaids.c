@@ -6,9 +6,8 @@
 	void inicio();
 	void a_datos();
 	void a_datosnew();
-	//void media();
-	
-		typedef struct {
+
+	typedef struct {
     char fuente[50];
     int conductividad, turbidez, coliformes;
     float ph, precipitaciones, temperatura, tanto_sal;
@@ -89,8 +88,7 @@ int main(){
     printf("1. Agregar datos\n");
     printf("2. Consultar datos\n");
     printf("3. Analizar datos\n");
-    printf("4. Comparacion de datos\n");
-    printf("5. Salir\n");
+    printf("4. Salir\n");
     scanf("%d", &opcion2);
     
     int opcion3;
@@ -152,50 +150,66 @@ int main(){
 			scanf("%d", &opcion4);
 			switch(opcion4){
 				case 1:
-				while(aux!= EOF){
-					aux=fgetc(fentrada);
-					printf("%c",aux);
-				}
-				printf("\n");
-				fclose(fentrada);
-				system("pause");
-				break;
+					
+				printf(" Fuentes\t\t pH  Conductividad  Turbidez  Coliformes  Temperatura  Precipitaciones  Tanto en sal\n");
+				 for(i=0;i<dimen;i++){
+    		   	printf(" %s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n",x[i].fuentes,x[i].pH, x[i].conductividad, x[i].turbidez, x[i].coliformes, x[i].temperatura, x[i].precipitaciones, x[i].tanto_en_sal);
+			   }
+   			     break;
     		    case 2:
+    		    	
+    		    printf("Fuentes\t\t pH\n");
     		   for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].pH);
 			   }
    			     break;
+   			     
 				case 3:
+					
+				printf("Fuentes\t\t Conductividad\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].conductividad);
 			   }
    			     break;
+   			     
          	   case 4:
+         	   	printf("Fuentes\t\t Turbidez\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].turbidez);
 			   }
 			   break;
             	case 5:
+            		
+            	printf("Fuentes\t\t Coliformes\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].coliformes);
 			   }
    			     break;
 				case 6:
+				
+				printf("Fuentes\t\t Temperatura\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].temperatura);
 			   }
    			     break;
+   			     
 				case 7:
+					
+				printf("Fuentes\t\t Precipitaciones\n");
     		   for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].precipitaciones);
 			   }
    			     break;
+   			     
 			    case 8:
+			    printf("Fuentes\t\t Tanto por ciento en sal\n");
   			     for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].tanto_en_sal);
 			   }
    			     break;
+   			     
 			   case 9:
+			   	
 			    printf("Para que el agua sea potable, debemos analizar la media del pH y que este se encuentre entre el 6,5 y 9,5\n");
 			   if(media(x,dimen,1)<6.5|| media(x,dimen, 1)>9.5){
 			    printf("Tras analizar este barrio podemos observar que el agua de este barrio no es potable, ya que la media es %f", media(x, dimen, 1));
@@ -210,6 +224,7 @@ int main(){
 	           	}
 	           	break;
      case 3:
+    
      	do{
     		printf("Introduzca el barrio a consultar (acabado en .txt). \n");
     		scanf("%s", nombre_fichero);
@@ -231,12 +246,13 @@ int main(){
 		}
 		
         //Convertir datos a struct
-		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
+		while(fscanf(fentrada, "%s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
 		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal) != EOF ) {
-		     //printf("Calculando...\n");
+		    
 		     i++;
+		     dim ++;
 		}
-		dim = i;
+		//dim = i;
     	fclose(fentrada);
        	(fsalida);
      	
@@ -286,16 +302,57 @@ int main(){
             		printf("7. Porcentaje de sal \n");
             		printf("8. Todos \n");
     	        	scanf("%d", &opcion6);
+    	        	
     	        	if (opcion6 < 8 && opcion6 > 0) {
-    	        		printf("Resultado de la moda: %.2f\n", media(d, dim, opcion6));
-					} else if (opcion6 == 8) {
-						printf("Resultado de la moda del pH: %.2f\n", moda(d, dim, 1));
-						printf("Resultado de la moda de la conductividad: %.2f\n", moda(d, dim, 2));
-						printf("Resultado de la moda de la turbidez: %.2f\n", moda(d, dim, 3));
-						printf("Resultado de la moda de coliformes: %.2f\n", moda(d, dim, 4));
-						printf("Resultado de la moda de la temperatura: %.2f\n", moda(d, dim, 5));
-						printf("Resultado de la moda de las precipitaciones: %.2f\n", moda(d, dim, 6));
-						printf("Resultado de la moda del porcentaje de sal: %.2f\n", moda(d, dim, 7));
+    	        		if((moda(d,dim,opcion6))==0){
+    	        			printf("No hay ningun valor que se repita por lo que no hay moda\n");
+						}
+						else{
+							printf("Resultado de la moda: %.2f\n", moda(d, dim, opcion6));
+						}
+					}	else if (opcion6 == 8) {
+					     if((moda(d,dim,1))==0){
+					     	printf("No hay ningun valor de pH que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda del pH: %.2f\n", moda(d, dim, 1));
+						 };
+						 if((moda(d,dim,2))==0){
+					     	printf("No hay ningun valor de conductividad que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda de la conductividad: %.2f\n", moda(d, dim, 2));
+						 };
+						  if((moda(d,dim,3))==0){
+					     	printf("No hay ningun valor de turbidez que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda de la turbidez: %.2f\n", moda(d, dim, 3));
+						 };
+						  if((moda(d,dim,4))==0){
+					     	printf("No hay ningun valor de coliformes que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda de coliformes: %.2f\n", moda(d, dim, 4));
+						 };
+						 if((moda(d,dim,5))==0){
+					     	printf("No hay ningun valor de la temperatura que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda de la temperatura: %.2f\n", moda(d, dim, 5));
+						 };
+						  if((moda(d,dim,6))==0){
+					     	printf("No hay ningun valor de las precipitaciones que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda de las precipitaciones: %.2f\n", moda(d, dim, 6));
+						 };
+						 if((moda(d,dim,7))==0){
+					     	printf("No hay ningun valor del porcentaje de sal que se repita por lo que no hay moda\n");	
+						 }
+						 else{
+						     printf("Resultado de la moda del porcentaje de sal: %.2f\n", moda(d, dim, 7));
+						 };
 					}	
     				break;
     			case 3:
@@ -396,9 +453,6 @@ int main(){
 	           	}	
 		  	break;	
     	case 4:
-			printf("A continuacion podras elegir entre que barrios comparar");
-			break;
-    	case 5:
     		printf("Hasta pronto\n");
     		break;
     	default:
@@ -658,67 +712,6 @@ void a_datosnew(){
 
    printf("\nSus datos han sido guardados\n");	
 	}
-	
-	/*	void media(){
-				FILE *fichero;
-    char linea[1000];
-    float contador = 0;
-    float num = 0;
-    float suma = 0;
-    float media = 0;
-	char nombre_fichero[100];
-	
-   printf("Introduzca el barrio en el que deseas realizar la media (acabado en .txt): \n");
-    scanf("%s", nombre_fichero);
-    fichero = fopen(nombre_fichero,"r");
-
-    if(fichero==NULL){
-   		printf("Error al abrir el fichero, \n");
-   		return;
-	}
-    //Ignorar la primera linea 
-    if (fgets(linea, 1000, fichero) == NULL) {
-        printf( "El fichero esta vacio.\n" );
-        return;
-    }
-	
-	 while (fgets(linea, 1000, fichero)) {
-
-        // Dividir la linea en palabras 
-        char *palabra = strtok(linea, "\t");
-
-        // Seleccionar la segunda palabra(media
-        palabra = strtok(NULL, " ");
-        palabra = strtok(palabra, "\t");
-
-        
-            Comprobamos que la palabra no es nula ni el final de la linea
-            En caso de no serlo, pasamos la palabra a float(eso es lo que hace la funcion atof) y sumamos
-        
-        if (palabra != NULL && palabra[0] != '\0') {
-            num = atof(palabra);
-            suma += num;
-        }
-
-        // printf("%s\n",palabra);
-        contador = contador + 1;
-        
-        // Salimos del bucle una vez llegado al final del fichero
-        if(feof(fichero)){
-            break;
-        }
-    }
-
-    // Calculamos la media e imprimimos por pantalla el resultado
-    media = suma/contador;
-    printf("La media del phes: %f\n", media);
-
-    // Cerramos el fichero
-    fclose(fichero);
-
-		} */
-		
-		
 
 float media(struct datos* d, int dim, int t) {
 	int i;
