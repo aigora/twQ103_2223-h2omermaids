@@ -30,7 +30,7 @@ float mediana (struct datos* d, int, int);
 float varianza (struct datos* d, int, int);
 float maximo (struct datos* d, int, int);
 float minimo (struct datos* d, int, int); 
-	 
+
 int main(){
 	
 	int opcion1;
@@ -563,7 +563,7 @@ void a_datos(){
         return;
     }
 
-    printf("Ingrese el número de fuentes que desea agregar:\n");
+    printf("Ingrese el numero de fuentes que desea agregar:\n");
     scanf("%d", &n2);
 
     for(j = 0; j < n2; j++){
@@ -646,7 +646,7 @@ void a_datosnew(){
         return;
     }
 
-    printf("Ingrese el número de fuentes que desea agregar:\n");
+    printf("Ingrese el numero de fuentes que desea agregar:\n");
     scanf("%d", &n);
 
     for(i = 0; i < n; i++){
