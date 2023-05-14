@@ -503,6 +503,9 @@ void inicio() {
         char codigo_clave[10];
     } Ingreso;
     Ingreso ingreso;
+     int encontrado = 0;
+	do
+	{
 
     fflush(stdin);
    
@@ -524,7 +527,6 @@ void inicio() {
     }
 
     char linea[100];
-    int encontrado = 0;
     while (fgets(linea, 100, usuarios) != NULL) {
 
         char nombre[100], apellido[100], DNI[9], codigo_clave[5];
@@ -544,7 +546,7 @@ void inicio() {
     }
 
     fclose(usuarios);
-      
+  } while (encontrado != 1);
 }
 void a_datos(){
 	 char nombre_fichero[100];
