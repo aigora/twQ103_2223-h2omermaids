@@ -1,6 +1,6 @@
 # [Título del trabajo]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+Analizando el medioambiente
 
 ## Integrantes del equipo
 
@@ -14,4 +14,5 @@ Maria Garcia Muñoz, mariagarm
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+Nuestro proyecto consiste en un programa que sirve para analizar, consultar y añadir fuentes de diferentes barrios de Madrid.
+En él, se pueden consultar propiedades importantes del agua, la cual es un elemento imprescindible para toda forma de vida y que en la actualidad está siendo contaminada. Estas propiedades, como el pH, la conductividad o los coliformes, nos ayudan a saber si el agua que bebemos de las fuentes es o no potable.
