@@ -62,8 +62,7 @@ int main(){
     printf("Elige entre una de estas opciones:\n");
     printf("1. Registrarte\n");
     printf("2. Iniciar sesion\n");
-    printf("3.Comenzar sin registrarse\n");
-    printf("4. Salir\n");
+    printf("3. Salir\n");
     scanf("%d", &opcion1);
 
     switch (opcion1) {
@@ -73,8 +72,6 @@ int main(){
     		inicio();
     		break;
     	case 3:
-		break;	
-    	case 4:
     		printf("Hasta pronto\n");
     		break;
     	default:
