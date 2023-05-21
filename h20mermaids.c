@@ -30,7 +30,7 @@ float mediana (struct datos* d, int, int);
 float varianza (struct datos* d, int, int);
 float maximo (struct datos* d, int, int);
 float minimo (struct datos* d, int, int); 
-	 
+
 int main(){
 	
 	int opcion1;
@@ -62,8 +62,7 @@ int main(){
     printf("Elige entre una de estas opciones:\n");
     printf("1. Registrarte\n");
     printf("2. Iniciar sesion\n");
-    printf("3.Comenzar sin registrarse\n");
-    printf("4. Salir\n");
+    printf("3. Salir\n");
     scanf("%d", &opcion1);
 
     switch (opcion1) {
@@ -73,8 +72,6 @@ int main(){
     		inicio();
     		break;
     	case 3:
-		break;	
-    	case 4:
     		printf("Hasta pronto\n");
     		break;
     	default:
@@ -247,12 +244,13 @@ int main(){
 		}
 		
         //Convertir datos a struct
-		while(fscanf(fentrada, " %s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
+		while(fscanf(fentrada, "%s %f %f %f %f %f %f %f", d[i].fuentes, &d[i].pH, &d[i].conductividad, &d[i].turbidez, 
 		&d[i].coliformes, &d[i].temperatura, &d[i].precipitaciones, &d[i].tanto_en_sal) != EOF ) {
 		    
 		     i++;
+		     dim ++;
 		}
-		dim = i;
+		//dim = i;
     	fclose(fentrada);
        	(fsalida);
      	
@@ -509,6 +507,9 @@ void inicio() {
         char codigo_clave[10];
     } Ingreso;
     Ingreso ingreso;
+     int encontrado = 0;
+	do
+	{
 
     fflush(stdin);
    
@@ -530,7 +531,6 @@ void inicio() {
     }
 
     char linea[100];
-    int encontrado = 0;
     while (fgets(linea, 100, usuarios) != NULL) {
 
         char nombre[100], apellido[100], DNI[9], codigo_clave[5];
@@ -550,7 +550,7 @@ void inicio() {
     }
 
     fclose(usuarios);
-      
+  } while (encontrado != 1);
 }
 void a_datos(){
 	 char nombre_fichero[100];
@@ -569,7 +569,7 @@ void a_datos(){
         return;
     }
 
-    printf("Ingrese el número de fuentes que desea agregar:\n");
+    printf("Ingrese el numero de fuentes que desea agregar:\n");
     scanf("%d", &n2);
 
     for(j = 0; j < n2; j++){
@@ -652,7 +652,7 @@ void a_datosnew(){
         return;
     }
 
-    printf("Ingrese el número de fuentes que desea agregar:\n");
+    printf("Ingrese el numero de fuentes que desea agregar:\n");
     scanf("%d", &n);
 
     for(i = 0; i < n; i++){
