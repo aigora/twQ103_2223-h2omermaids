@@ -510,7 +510,6 @@ void inicio() {
      int encontrado = 0;
 	do
 	{
-
     fflush(stdin);
    
     printf("Ingrese su DNI (sin la letra):\n");
