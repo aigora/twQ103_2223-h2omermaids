@@ -97,7 +97,7 @@ int main(){
 	
     switch (opcion2) {
     	case 1:
-    		printf("Usted ha elegido agragar datos, elija ahors entre estas opciones\n");
+    		printf("Usted ha elegido agregar datos, elija ahors entre estas opciones\n");
     		printf("1. Agregar datos a un fichero nuevo\n");
     		printf("2. Agregar datos a un fichero existente\n");
     		scanf("%d", &opcion3);
@@ -509,9 +509,9 @@ void inicio() {
         char codigo_clave[10];
     } Ingreso;
     Ingreso ingreso;
-
-    fflush(stdin);
-   
+	int encontrado = 0;
+	do
+	{  fflush(stdin);
     printf("Ingrese su DNI (sin la letra):\n");
     fflush(stdin);
     fgets(ingreso.DNI, 20, stdin);
@@ -528,9 +528,8 @@ void inicio() {
         printf("Error al abrir el fichero\n");
         return;
     }
-
+	}
     char linea[100];
-    int encontrado = 0;
     while (fgets(linea, 100, usuarios) != NULL) {
 
         char nombre[100], apellido[100], DNI[9], codigo_clave[5];
