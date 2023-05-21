@@ -97,7 +97,7 @@ int main(){
 	
     switch (opcion2) {
     	case 1:
-    		printf("Elija una opcion de la siguientes para agregar datos\n");
+    		printf("Usted ha elegido agragar datos, elija ahors entre estas opciones\n");
     		printf("1. Agregar datos a un fichero nuevo\n");
     		printf("2. Agregar datos a un fichero existente\n");
     		scanf("%d", &opcion3);
@@ -151,21 +151,20 @@ int main(){
 			switch(opcion4){
 				case 1:
 					
-				printf(" Fuentes\t\t pH  Conductividad  Turbidez  Coliformes  Temperatura  Precipitaciones  Tanto en sal\n");
+				printf(" Fuentes\t pH  Conductividad  Turbidez  Coliformes  Temperatura  Precipitaciones  Tanto en sal\n");
 				 for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\t %.2f\n",x[i].fuentes,x[i].pH, x[i].conductividad, x[i].turbidez, x[i].coliformes, x[i].temperatura, x[i].precipitaciones, x[i].tanto_en_sal);
 			   }
    			     break;
     		    case 2:
-    		    	
+    		    printf("___________PH___________\n");	
     		    printf("Fuentes\t\t pH\n");
     		   for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].pH);
 			   }
    			     break;
-   			     
 				case 3:
-					
+				 printf("___________CONDUCTIVIDAD___________\n");	
 				printf("Fuentes\t\t Conductividad\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].conductividad);
@@ -173,6 +172,7 @@ int main(){
    			     break;
    			     
          	   case 4:
+         	   	printf("___________TURBIDEZ___________\n");	
          	   	printf("Fuentes\t\t Turbidez\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].turbidez);
@@ -186,7 +186,7 @@ int main(){
 			   }
    			     break;
 				case 6:
-				
+				printf("___________TEMPERATURA___________\n");	
 				printf("Fuentes\t\t Temperatura\n");
     		    for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].temperatura);
@@ -194,7 +194,7 @@ int main(){
    			     break;
    			     
 				case 7:
-					
+				printf("___________PRECIPITACIONES___________\n");		
 				printf("Fuentes\t\t Precipitaciones\n");
     		   for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].precipitaciones);
@@ -202,6 +202,7 @@ int main(){
    			     break;
    			     
 			    case 8:
+			    printf("___________TANTO_EN_SAL___________\n");	
 			    printf("Fuentes\t\t Tanto por ciento en sal\n");
   			     for(i=0;i<dimen;i++){
     		   	printf(" %s\t %.2f\n",x[i].fuentes,x[i].tanto_en_sal);
@@ -268,6 +269,7 @@ int main(){
     		
     		switch(opcion5) {
     			case 1:
+    				printf("LE CALCULAREMOS LA MEDIA\n\n");
     				printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -291,6 +293,7 @@ int main(){
 					}
     				break;
     			case 2:
+    				printf("LE CALCULAREMOS LA MODA\n\n");
 					printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -355,6 +358,7 @@ int main(){
 					}	
     				break;
     			case 3:
+    					printf("LE CALCULAREMOS LA MEDIANA\n\n");
     				printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -378,6 +382,7 @@ int main(){
 					}
     				break;
     			case 4:
+    				printf("LE CALCULAREMOS LA VARIANZA\n\n");
     				printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -401,6 +406,7 @@ int main(){
 					}
     				break;
     			case 5:
+    				printf("LE CALCULAREMOS EL MAXIMO\n\n");
     				printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
@@ -423,7 +429,8 @@ int main(){
 						printf("Resultado de el maximo del porcentaje de sal: %.2f\n", maximo(d, dim, 7));
 					}	
     				break;
-    			case 6:	
+    			case 6:
+					printf("LE CALCULAREMOS EL MINIMO\n\n");
     			    printf("Elija que caracteristica quiere analizar:\n");
     	        	printf("1.pH\n");
             		printf("2.Conductividad\n");
